@@ -1,5 +1,3 @@
-package SchangKyleProj1.src;
-
 /*
  * Kyle Schang
  * EECS 1510
