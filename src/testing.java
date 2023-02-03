@@ -1,5 +1,4 @@
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class testing {
@@ -8,6 +7,7 @@ public class testing {
 
         Scanner scnr = new Scanner(System.in);
         System.out.println("Enter ten numbers: ");
+        //TODO fix this error
         double numbers[] = new double[10];
 
         for (int i = 0; i < 10; ++i){
