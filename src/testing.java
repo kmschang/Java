@@ -1,55 +1,55 @@
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class testing {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        int j;
-        int k;
-        int[] zipcodeList = {48178, 46393, 48178};
-        boolean duplicates = false;
+        Scanner scnr = new Scanner(System.in);
+        System.out.println("Enter ten numbers: ");
+        double numbers[] = new double[10];
 
-        for (j = 0; j < zipcodeList.length; ++j){
-            for (k =0; k < zipcodeList.length; ++k){
-                if (j != k){
-                    if (zipcodeList[j] == zipcodeList[k]){
-                        duplicates = true;
-                        break;
-                    }
-                }
-
-            }
-
+        for (int i = 0; i < 10; ++i){
+            numbers[i] = scnr.nextDouble();
         }
 
-
+        System.out.printf("The mean is %.2f\n", mean(numbers));
+        System.out.printf("The standard deviation is %.5f\n", deviation(numbers));
 
     }
 
-    public static boolean isReverse(int[] array1, int[] array2) {
-        int k;
-        int temp;
+    public static double mean(double[] x){
 
-        for (k = 0; k < array1.length / 2; ++k) {
-            temp = array1[k];
-            array1[k] = array1[((array1.length - k) - 1)];
-            array1[((array1.length - k) - 1)] = temp;
+        double total = 0;
+        for (int i = 0; i < 10; ++ i){
+            total = total + x[i];
         }
-        for (int i = 0; i < array1.length; ++i) {
-            if (array1[i] != array2[i]) {
-                for (k = 0; k < array1.length / 2; ++k) {
-                    temp = array1[k];
-                    array1[k] = array1[((array1.length - k) - 1)];
-                    array1[((array1.length - k) - 1)] = temp;
-                }
-                return false;
-            }
+
+        return total/10;
+
+    }
+
+    public static double deviation (double[] x){
+
+        double total = 0;
+        for (int i = 0; i < 10; ++ i){
+            total = total + x[i];
         }
-        for (k = 0; k < array1.length / 2; ++k) {
-            temp = array1[k];
-            array1[k] = array1[((array1.length - k) - 1)];
-            array1[((array1.length - k) - 1)] = temp;
+
+        double mean = total / 10;
+
+        double total_minus_mean = 0;
+
+        for (int i = 0; i < 10; ++i){
+            double value = x[i] - mean;
+            value = value * value;
+            total_minus_mean = total_minus_mean + value;
         }
-        return true;
+
+        double under_radical = total_minus_mean / 9;
+        return Math.sqrt(under_radical);
+
     }
 
 }
