@@ -57,44 +57,34 @@ public class Suduko {
             }
             else if (check_for_zero(board).length == 2){
                 if (two_missing(check_for_zero(board)) == 1){
-                    answers[num_boards-1][0][0] = horizontal(check_for_zero(board)[0][0], board);
-                    answers[num_boards-1][0][1] = check_for_zero(board)[0][0];
-                    answers[num_boards-1][0][2] = check_for_zero(board)[0][1];
-                    answers[num_boards-1][1][0] = horizontal(check_for_zero(board)[1][0], board);
-                    answers[num_boards-1][1][1] = check_for_zero(board)[1][0];
-                    answers[num_boards-1][1][2] = check_for_zero(board)[1][1];
+                    for (int i = 0; i < 2; ++i){
+                        answers[num_boards-1][i][0] = horizontal(check_for_zero(board)[i][0], board);
+                        answers[num_boards-1][i][1] = check_for_zero(board)[i][0];
+                        answers[num_boards-1][i][2] = check_for_zero(board)[i][1];
+                    }
                 }
                 else {
-                    answers[num_boards-1][0][0] = vertical(check_for_zero(board)[0][1], board);
-                    answers[num_boards-1][0][1] = check_for_zero(board)[0][0];
-                    answers[num_boards-1][0][2] = check_for_zero(board)[0][1];
-                    answers[num_boards-1][1][0] = vertical(check_for_zero(board)[1][1], board);
-                    answers[num_boards-1][1][1] = check_for_zero(board)[1][0];
-                    answers[num_boards-1][1][2] = check_for_zero(board)[1][1];
+                    for (int i = 0; i < 2; ++i){
+                        answers[num_boards-1][i][0] = vertical(check_for_zero(board)[i][1], board);
+                        answers[num_boards-1][i][1] = check_for_zero(board)[i][0];
+                        answers[num_boards-1][i][2] = check_for_zero(board)[i][1];
+                    }
                 }
             }
             else if (check_for_zero(board).length == 3){
                 if (three_missing(check_for_zero(board)) == 1){
-                    answers[num_boards-1][0][0] = horizontal(check_for_zero(board)[0][0], board);
-                    answers[num_boards-1][0][1] = check_for_zero(board)[0][0];
-                    answers[num_boards-1][0][2] = check_for_zero(board)[0][1];
-                    answers[num_boards-1][1][0] = horizontal(check_for_zero(board)[1][0], board);
-                    answers[num_boards-1][1][1] = check_for_zero(board)[1][0];
-                    answers[num_boards-1][1][2] = check_for_zero(board)[1][1];
-                    answers[num_boards-1][2][0] = horizontal(check_for_zero(board)[2][0], board);
-                    answers[num_boards-1][2][1] = check_for_zero(board)[2][0];
-                    answers[num_boards-1][2][2] = check_for_zero(board)[2][1];
+                    for (int i = 0; i < 3; ++i) {
+                        answers[num_boards - 1][i][0] = horizontal(check_for_zero(board)[i][0], board);
+                        answers[num_boards - 1][i][1] = check_for_zero(board)[i][0];
+                        answers[num_boards - 1][i][2] = check_for_zero(board)[i][1];
+                    }
                 }
                 else if (three_missing(check_for_zero(board)) == 2){
-                    answers[num_boards-1][0][0] = vertical(check_for_zero(board)[0][1], board);
-                    answers[num_boards-1][0][1] = check_for_zero(board)[0][0];
-                    answers[num_boards-1][0][2] = check_for_zero(board)[0][1];
-                    answers[num_boards-1][1][0] = vertical(check_for_zero(board)[1][1], board);
-                    answers[num_boards-1][1][1] = check_for_zero(board)[1][0];
-                    answers[num_boards-1][1][2] = check_for_zero(board)[1][1];
-                    answers[num_boards-1][2][0] = vertical(check_for_zero(board)[2][1], board);
-                    answers[num_boards-1][2][1] = check_for_zero(board)[2][0];
-                    answers[num_boards-1][2][2] = check_for_zero(board)[2][1];
+                    for (int i = 0; i < 3; ++i){
+                        answers[num_boards-1][i][0] = vertical(check_for_zero(board)[i][1], board);
+                        answers[num_boards-1][i][1] = check_for_zero(board)[i][0];
+                        answers[num_boards-1][i][2] = check_for_zero(board)[i][1];
+                    }
                 }
                 else if (three_missing(check_for_zero(board)) == 3){
                     answers[num_boards-1][0][0] = horizontal(check_for_zero(board)[0][0], board);
@@ -121,9 +111,9 @@ public class Suduko {
                     answers[num_boards-1][2][2] = check_for_zero(board)[1][1];
                 }
             }
-
-
         }
+
+
     }
 
     // method early on to print a particular board to make sure it is working
@@ -276,12 +266,6 @@ public class Suduko {
         {
             // combination doesn't work, which it should never.
             return 5;
-        }
-    }
-
-    public static void print_statement(int[][] zero_cord, int[] answer, int x){
-        if (zero_cord.length == 1){
-            System.out.println("("+zero_cord[x][0]+","+zero_cord[x][1]+","+answer[x]+")");
         }
     }
 
