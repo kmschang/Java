@@ -341,47 +341,14 @@ public class Suduko {
         }
         Arrays.sort(numbers);
 
-        /*TODO Condense if statements into for loop
-                if (number[i] != i){ missing_int = i}
-         */
-
         // finds the missing one and returns the value to be put in a print statement
-        int missing_int;
-        if (numbers[1] != 1)
-        {
-            missing_int = 1;
-        } 
-        else if (numbers[2] != 2
-        		){
-            missing_int = 2;
-        } 
-        else if (numbers[3] != 3)
-        {
-            missing_int = 3;
-        } 
-        else if (numbers[4] != 4)
-        {
-            missing_int = 4;
-        } 
-        else if (numbers[5] != 5)
-        {
-            missing_int = 5;
-        } 
-        else if (numbers[6] != 6)
-        {
-            missing_int = 6;
-        } 
-        else if (numbers[7] != 7)
-        {
-            missing_int = 7;
-        } 
-        else if (numbers[8] != 8)
-        {
-            missing_int = 8;
-        } 
-        else 
-        {
-            missing_int = 9;
+        int missing_int = 9;
+
+        for (int i = 1; i < 9; ++i){
+            if (numbers[i] != i){
+                missing_int = i;
+                break;
+            }
         }
         return missing_int;
     }
@@ -399,47 +366,14 @@ public class Suduko {
         }
         Arrays.sort(numbers);
 
-        /*TODO Condense if statements into for loop
-                if (number[i] != i){ missing_int = i}
-         */
-
         // finds the missing one and returns the value to be put in a print statement
-        int missing_int;
-        if (numbers[1] != 1)
-        {
-            missing_int = 1;
-        } 
-        else if (numbers[2] != 2)
-        {
-            missing_int = 2;
-        }
-        else if (numbers[3] != 3)
-        {
-            missing_int = 3;
-        }
-        else if (numbers[4] != 4)
-        {
-            missing_int = 4;
-        }
-        else if (numbers[5] != 5)
-        {
-            missing_int = 5;
-        }
-        else if (numbers[6] != 6)
-        {
-            missing_int = 6;
-        }
-        else if (numbers[7] != 7)
-        {
-            missing_int = 7;
-        }
-        else if (numbers[8] != 8)
-        {
-            missing_int = 8;
-        }
-        else
-        {
-            missing_int = 9;
+        int missing_int = 9;
+
+        for (int i = 1; i < 9; ++i){
+            if (numbers[i] != i){
+                missing_int = i;
+                break;
+            }
         }
         return missing_int;
     }
