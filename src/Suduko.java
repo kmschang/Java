@@ -25,17 +25,9 @@ public class Suduko {
         Scanner scnr = new Scanner(System.in);
         int[][] board = new int[63][9];
 
-        /*TODO Make while loop actually infinite
-            Make it so that it does one board at a time for scanning and looking at it then saving the fixed results
-            to an array to print at the end but print board at the end
-         */
-
         // while loop to scan all the numbers in, no matter how many.
         while (true) 
         {
-            //TODO Remove set of for loops for k
-            //TODO Rename variables to cleaner and more descriptive things
-
             // one board at a time, so we can recognize when we have the all zero one
             for (int k = 0; k < 9; ++k) 
             {
@@ -70,8 +62,6 @@ public class Suduko {
 
         // print the scanned boards
         print_all_boards(num_boards, board);
-
-        //TODO Make this next part more modular with the final print statement
 
         // the main logic for solving smaller boards, need to iterate through all the smaller boards
         for (int n = 0; n < num_boards; ++n)
@@ -349,8 +339,6 @@ public class Suduko {
         }
         return missing_int;
     }
-
-    //TODO Make it so that it prints the boards as you go
 
     // takes in the massive board and prints it right back with the correct formatting
     public static void print_all_boards(int num_boards, int[][] board){
