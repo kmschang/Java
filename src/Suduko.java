@@ -240,10 +240,7 @@ public class Suduko {
         int[] numbers = new int[9];
 
         // puts all numbers in a row in here and sorts to find the missing one
-        for (int i = 0; i < 9; ++ i)
-        {
-            numbers[i] = board[row][i];
-        }
+        System.arraycopy(board[row], 0, numbers, 0, 9);
         Arrays.sort(numbers);
 
         // finds the missing one and returns the value to be put in a print statement
