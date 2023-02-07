@@ -94,7 +94,7 @@ public class Suduko {
             else if (check_for_zero(one_board(n,board)).length == 2)
             {
                 // checks to see if they are next to each other, they aren't, so we solve both horizontally
-                if (two_missing(check_for_zero(one_board(n,board))) == 1)
+                if (two_missing(check_for_zero(one_board(n,board))))
                 {
                     // main logic
                     int x; int y; int z;
@@ -403,17 +403,9 @@ public class Suduko {
     }
 
     // determine which way we need to solve with two missing
-    public static int two_missing(int[][] zero_cord){
-        if (zero_cord[0][0] != zero_cord[1][0])
-        {
-            // need to do horizontal for both
-            return 1;
-        }
-        else 
-        {
-            // need to do vertical for both
-            return 2;
-        }
+    public static boolean two_missing(int[][] zero_cord){
+        // true = horizontal, false = vertical
+        return zero_cord[0][0] != zero_cord[1][0];
     }
 
 
