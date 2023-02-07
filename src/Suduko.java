@@ -116,12 +116,12 @@ public class Suduko {
                     answers[num_boards-1][0][1] = check_for_zero(board)[0][0];
                     answers[num_boards-1][0][2] = check_for_zero(board)[0][1];
                     board[check_for_zero(board)[0][0]][check_for_zero(board)[0][1]] = horizontal(check_for_zero(board)[0][0], board);
-                    answers[num_boards-1][1][0] = vertical(check_for_zero(board)[0][1], board);
-                    answers[num_boards-1][1][1] = check_for_zero(board)[0][0];
-                    answers[num_boards-1][1][2] = check_for_zero(board)[0][1];
-                    answers[num_boards-1][2][0] = vertical(check_for_zero(board)[1][1], board);
-                    answers[num_boards-1][2][1] = check_for_zero(board)[1][0];
-                    answers[num_boards-1][2][2] = check_for_zero(board)[1][1];
+                    for (int i = 0; i < 2; ++i)
+                    {
+                        answers[num_boards-1][i+1][0] = vertical(check_for_zero(board)[i][1], board);
+                        answers[num_boards-1][i+1][1] = check_for_zero(board)[i][0];
+                        answers[num_boards-1][i+1][2] = check_for_zero(board)[i][1];
+                    }
                 }
                 // need to solve the last one horizontally and then the other two vertically once we put the other back into the board
                 else if (three_missing(check_for_zero(board)) == 4)
@@ -130,15 +130,16 @@ public class Suduko {
                     answers[num_boards-1][0][1] = check_for_zero(board)[2][0];
                     answers[num_boards-1][0][2] = check_for_zero(board)[2][1];
                     board[check_for_zero(board)[2][0]][check_for_zero(board)[2][1]] = horizontal(check_for_zero(board)[2][0], board);
-                    answers[num_boards-1][1][0] = vertical(check_for_zero(board)[0][1], board);
-                    answers[num_boards-1][1][1] = check_for_zero(board)[0][0];
-                    answers[num_boards-1][1][2] = check_for_zero(board)[0][1];
-                    answers[num_boards-1][2][0] = vertical(check_for_zero(board)[1][1], board);
-                    answers[num_boards-1][2][1] = check_for_zero(board)[1][0];
-                    answers[num_boards-1][2][2] = check_for_zero(board)[1][1];
+                    for (int i = 0; i < 2; ++i)
+                    {
+                        answers[num_boards-1][i+1][0] = vertical(check_for_zero(board)[i][1], board);
+                        answers[num_boards-1][i+1][1] = check_for_zero(board)[i][0];
+                        answers[num_boards-1][i+1][2] = check_for_zero(board)[i][1];
+                    }
                 }
             }
         }
+        System.out.println("END");
     }
 
     // method early on to print a particular board to make sure it is working
