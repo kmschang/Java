@@ -240,7 +240,7 @@ public class Suduko {
     }
 
     // separate one board at a time from the large amount of numbers taken in by scanner
-    public static int[][] one_board(int n, int board[][]){
+    public static int[][] one_board(int n, int[][] board){
 
         // makes a new temporary board just 9x9, so we can solve one board at a time
         int[][] s_board = new int[9][9];
@@ -263,31 +263,6 @@ public class Suduko {
             }
         }
         return s_board;
-    }
-
-    // method early on to print a particular board to make sure it is working
-    public static void print_board(int[][] board){
-
-        System.out.println();
-        for (int i = 0; i < 9; ++i) 
-        {
-            for(int j = 0; j < 9; ++j)
-            {
-                System.out.print(board[i][j]);
-                if (j != 8) {
-                    System.out.print(" ");
-                } 
-                if (j == 8 & i != 8) 
-                {
-                    System.out.println();
-                } 
-                if (i == 8 & j == 8) 
-                {
-                    System.out.println();
-                }
-            }
-        }
-        System.out.println();
     }
 
     // finds how many zeros there are and puts them into an array to come back to
@@ -399,22 +374,18 @@ public class Suduko {
                 if (j == 8 & i != 8)
                 {
                     System.out.println();
-                } 
-                if (i == 8 & j == 8) 
-                {
-                    System.out.println("");
+                }
+                if (j ==8 & i == 8){
+                    System.out.println();
                 }
             }
         }
-
-        // adds the board of all zeros to the end, would be a waste to scan it in, so we just add it to the end
-        int[][] zero_board = new int[9][9];
 
         for (int i = 0; i < 9; ++i)
         {
             for(int j = 0; j < 9; ++j) 
             {
-                System.out.print(zero_board[i][j]);
+                System.out.print(0);
                 if (j != 8) 
                 {
                     System.out.print(" ");
