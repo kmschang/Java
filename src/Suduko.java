@@ -27,7 +27,8 @@ public class Suduko {
         int[][][] answers = new int[9][3][3];
 
         // while loop to scan in one board at a time
-        while (true) {
+        while (true)
+        {
             int[][] board = new int[9][9];
 
             int board_total = 0;
@@ -51,6 +52,10 @@ public class Suduko {
             }
             else
             {
+                if (num_boards == 0)
+                {
+                    System.out.println();
+                }
                 print_board(board);
                 ++ num_boards;
             }
@@ -139,6 +144,7 @@ public class Suduko {
                 }
             }
         }
+        print_answers(answers, num_boards);
         System.out.println("END");
     }
 
@@ -290,5 +296,39 @@ public class Suduko {
             return 5;
         }
     }
+
+
+    public static void print_answers(int[][][] ans, int num_boards){
+
+        for (int boa = 0; boa < num_boards; ++ boa)
+        {
+            int num_results = 0;
+            for (int set = 0; set < 3; ++ set)
+            {
+                if (ans[boa][set][0] == 0){
+                    set = 2;
+                }
+                else
+                {
+                    ++ num_results;
+                }
+            }
+
+            if (num_results == 1){
+                System.out.println("("+ans[boa][0][1]+","+ans[boa][0][2]+","+ans[boa][0][0]+")");
+            }
+            else if (num_results == 2){
+                System.out.print("("+ans[boa][0][1]+","+ans[boa][0][2]+","+ans[boa][0][0]+")");
+                System.out.print(" ("+ans[boa][1][1]+","+ans[boa][1][2]+","+ans[boa][1][0]+")\n");
+            }
+            else
+            {
+                System.out.print("("+ans[boa][0][1]+","+ans[boa][0][2]+","+ans[boa][0][0]+")");
+                System.out.print(" ("+ans[boa][1][1]+","+ans[boa][1][2]+","+ans[boa][1][0]+")");
+                System.out.print(" ("+ans[boa][2][1]+","+ans[boa][2][2]+","+ans[boa][2][0]+")\n");
+            }
+        }
+    }
+
 }
 
