@@ -5,17 +5,15 @@ public class testing {
 
     public static void main(String[] args) {
 
-        Scanner scnr = new Scanner(System.in);
-        System.out.println("Enter ten numbers: ");
-        //TODO fix this error
-        double numbers[] = new double[10];
+        String s = "test ";
 
-        for (int i = 0; i < 10; ++i){
-            numbers[i] = scnr.nextDouble();
-        }
+        int num1 = 1;
+        int num2 = 2;
+        int num3 = 3;
 
-        System.out.printf("The mean is %.2f\n", mean(numbers));
-        System.out.printf("The standard deviation is %.5f\n", deviation(numbers));
+        s = new StringBuilder().append(s).append("(").append(num1).append(",").append(num2).append(")").toString();
+
+        System.out.println(s);
 
     }
 
