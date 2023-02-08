@@ -63,11 +63,10 @@ public class Suduko {
                 int y = check_for_zero(board)[0][1];
                 if (num_print == 0) {
                     answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
-                    ++num_print;
                 } else {
                     answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
-                    ++num_print;
                 }
+                ++num_print;
             }
             // two missing in a board
             else if (check_for_zero(board).length == 2) {
@@ -177,13 +176,12 @@ public class Suduko {
                     if (num_print == 0)
                     {
                         answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
-                        ++num_print;
                     }
                     else
                     {
                         answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
-                        ++num_print;
                     }
+                    ++num_print;
 
                     for (int i = 0; i < 2; ++i)
                     {
@@ -205,13 +203,12 @@ public class Suduko {
                     if (num_print == 0)
                     {
                         answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
-                        ++num_print;
                     }
                     else
                     {
                         answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
-                        ++num_print;
                     }
+                    ++num_print;
 
                     for (int i = 0; i < 2; ++i)
                     {
