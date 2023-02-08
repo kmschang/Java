@@ -3,28 +3,8 @@
     <option name="myName" value="Project Default" />
     <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <Languages>
-<<<<<<< HEAD
         <language minSize="135" name="Java" />
-=======
-        <language minSize="117" name="Java" />
->>>>>>> string_concat
-        <language minSize="112" name="Python" />
       </Languages>
-    </inspection_tool>
-    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
-      <option name="ignoredErrors">
-        <list>
-          <option value="E266" />
-        </list>
-      </option>
-    </inspection_tool>
-    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="ignoredIdentifiers">
-        <list>
-          <option value="list.add" />
-          <option value="tuple.append" />
-        </list>
-      </option>
     </inspection_tool>
   </profile>
 </component>
