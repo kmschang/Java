@@ -17,14 +17,13 @@ import java.util.Scanner;
 
 public class Suduko {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        // scan in all the boards
         // initializing the number of boards to zero
         int num_boards = 0;
         Scanner scnr = new Scanner(System.in);
-        int[][] board = new int[63][9];
 
+<<<<<<< HEAD
         // while loop to scan all the numbers in, no matter how many.
         while (true) 
         {
@@ -45,21 +44,113 @@ public class Suduko {
                         row_total = row_total + num;
                     }
                     board_total = board_total + row_total;
+=======
+        // initializing the answer array
+        StringBuilder answers = new StringBuilder();
+        int num_print = 0;
+
+        // while loop to scan in one board at a time
+        while (true) {
+            int[][] board = new int[9][9];
+
+            int board_total = 0;
+            for (int row = 0; row < 9; ++row) {
+                int row_total = 0;
+                for (int col = 0; col < 9; ++col) {
+                    int num = scnr.nextInt();
+                    board[row][col] = num;
+                    row_total = row_total + num;
+>>>>>>> string_concat
                 }
-                // stopping if there is a board with all zeros, as per instructions
-                if (board_total == 0) 
-                {
+                board_total = board_total + row_total;
+            }
+            if (board_total == 0) {
+                int[][] zero_board = new int[9][9];
+                print_board(zero_board);
+                scnr.close();
+                break;
+            } else {
+                if (num_boards == 0) {
                     System.out.println();
-                    break;
-                } 
-                else
-                {
-                    ++num_boards;
+                }
+                print_board(board);
+                ++num_boards;
+            }
+
+            // solving the board and putting the coordinates and answer in an array
+            // one missing in a board
+
+            if (check_for_zero(board).length == 1) {
+                int a = horizontal(check_for_zero(board)[0][0], board);
+                int x = check_for_zero(board)[0][0];
+                int y = check_for_zero(board)[0][1];
+                if (num_print == 0) {
+                    answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
+                } else {
+                    answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
+                }
+                ++num_print;
+            }
+            // two missing in a board
+            else if (check_for_zero(board).length == 2) {
+                // need to solve both horizontally
+                if (two_missing(check_for_zero(board))) {
+                    int num_row = 0;
+                    for (int i = 0; i < 2; ++i) {
+                        int a = horizontal(check_for_zero(board)[i][0], board);
+                        int x = check_for_zero(board)[i][0];
+                        int y = check_for_zero(board)[i][1];
+
+                        if (num_print == 0 & num_row == 0) {
+                            answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else if (num_print != 0 & num_row == 0) {
+                            answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else {
+                            answers.append(" (").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        }
+                    }
+                }
+                // need to solve both vertically
+                else {
+                    int num_row = 0;
+                    for (int i = 0; i < 2; ++i) {
+                        int a = vertical(check_for_zero(board)[i][1], board);
+                        int x = check_for_zero(board)[i][0];
+                        int y = check_for_zero(board)[i][1];
+
+                        if (num_print == 0 & num_row == 0) {
+                            answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else if (num_print != 0 & num_row == 0) {
+                            answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else {
+                            answers.append(" (").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        }
+                    }
                 }
             }
-            break;
-        }
+            // three missing in a board
+            else if (check_for_zero(board).length == 3) {
+                // need to solve all horizontally
+                if (three_missing(check_for_zero(board)) == 1) {
+                    int num_row = 0;
+                    for (int i = 0; i < 3; ++i) {
+                        int a = horizontal(check_for_zero(board)[i][0], board);
+                        int x = check_for_zero(board)[i][0];
+                        int y = check_for_zero(board)[i][1];
 
+<<<<<<< HEAD
         // print the scanned boards
         print_all_boards(num_boards, board);
 
@@ -98,132 +189,108 @@ public class Suduko {
                     b = check_for_zero(one_board(n,board))[1][1];
                     c = type_1_horizontal(check_for_zero(one_board(n,board))[1][0],one_board(n,board));
                     System.out.print(" ("+a+","+b+","+c+")\n");
+=======
+                        if (num_print == 0 & num_row == 0) {
+                            answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else if (num_print != 0 & num_row == 0) {
+                            answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else {
+                            answers.append(" (").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        }
+                    }
+>>>>>>> string_concat
                 }
-                // they are next to each other, so we solve them both vertically
-                else 
-                {
-                    // main logic
-                    int x; int y; int z;
-                    x = check_for_zero(one_board(n,board))[0][0];
-                    y = check_for_zero(one_board(n,board))[0][1];
-                    z = type_1_vertical(check_for_zero(one_board(n,board))[0][1],one_board(n,board));
-                    System.out.print("("+x+","+y+","+z+")");
+                // need to solve all vertically
+                else if (three_missing(check_for_zero(board)) == 2) {
+                    int num_row = 0;
+                    for (int i = 0; i < 3; ++i) {
+                        int a = vertical(check_for_zero(board)[i][1], board);
+                        int x = check_for_zero(board)[i][0];
+                        int y = check_for_zero(board)[i][1];
 
-                    int a; int b; int c;
-                    a = check_for_zero(one_board(n,board))[1][0];
-                    b = check_for_zero(one_board(n,board))[1][1];
-                    c = type_1_vertical(check_for_zero(one_board(n,board))[1][1],one_board(n,board));
-                    System.out.print(" ("+a+","+b+","+c+")\n");
+                        if (num_print == 0 & num_row == 0) {
+                            answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else if (num_print != 0 & num_row == 0) {
+                            answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else {
+                            answers.append(" (").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        }
+                    }
                 }
-            }
-            // there are three unknown values to solve for
-            else 
-            {
-                // there are four different ways to solve, this one is all horizontally
-                if (three_missing(check_for_zero(one_board(n,board))) == 1)
-                {
-                    // main logic
-                    int x; int y; int z;
-                    x = check_for_zero(one_board(n,board))[0][0];
-                    y = check_for_zero(one_board(n,board))[0][1];
-                    z = type_1_horizontal(check_for_zero(one_board(n,board))[0][0],one_board(n,board));
-                    System.out.print("("+x+","+y+","+z+")");
+                // need to solve first one horizontally and then the other two vertically once we put the other back into the board
+                else if (three_missing(check_for_zero(board)) == 3) {
 
-                    int a; int b; int c;
-                    a = check_for_zero(one_board(n,board))[1][0];
-                    b = check_for_zero(one_board(n,board))[1][1];
-                    c = type_1_horizontal(check_for_zero(one_board(n,board))[1][0],one_board(n,board));
-                    System.out.print(" ("+a+","+b+","+c+")");
+                    int a = horizontal(check_for_zero(board)[0][0], board);
+                    int x = check_for_zero(board)[0][0];
+                    int y = check_for_zero(board)[0][1];
+                    board[check_for_zero(board)[0][0]][check_for_zero(board)[0][1]] = horizontal(check_for_zero(board)[0][0], board);
 
-                    int d; int e; int f;
-                    d = check_for_zero(one_board(n,board))[2][0];
-                    e = check_for_zero(one_board(n,board))[2][1];
-                    f = type_1_horizontal(check_for_zero(one_board(n,board))[2][0],one_board(n,board));
-                    System.out.print(" ("+d+","+e+","+f+")\n");
+                    if (num_print == 0)
+                    {
+                        answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
+                    }
+                    else
+                    {
+                        answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
+                    }
+                    ++num_print;
 
+                    for (int i = 0; i < 2; ++i)
+                    {
+                        int aa = vertical(check_for_zero(board)[i][1], board);
+                        int xx = check_for_zero(board)[i][0];
+                        int yy = check_for_zero(board)[i][1];
+
+                        answers.append(" (").append(xx).append(",").append(yy).append(",").append(aa).append(")");
+                        ++num_print;
+                    }
                 }
-                // this one is all vertically
-                else if (three_missing(check_for_zero(one_board(n,board))) == 2)
-                {
-                    // main logic
-                    int x; int y; int z;
-                    x = check_for_zero(one_board(n,board))[0][0];
-                    y = check_for_zero(one_board(n,board))[0][1];
-                    z = type_1_vertical(check_for_zero(one_board(n,board))[0][1],one_board(n,board));
-                    System.out.print("("+x+","+y+","+z+")");
+                // need to solve the last one horizontally and then the other two vertically once we put the other back into the board
+                else if (three_missing(check_for_zero(board)) == 4) {
+                    int a = horizontal(check_for_zero(board)[2][0], board);
+                    int x = check_for_zero(board)[2][0];
+                    int y = check_for_zero(board)[2][1];
+                    board[check_for_zero(board)[2][0]][check_for_zero(board)[2][1]] = horizontal(check_for_zero(board)[2][0], board);
 
-                    int a; int b; int c;
-                    a = check_for_zero(one_board(n,board))[1][0];
-                    b = check_for_zero(one_board(n,board))[1][1];
-                    c = type_1_vertical(check_for_zero(one_board(n,board))[1][1],one_board(n,board));
-                    System.out.print(" ("+a+","+b+","+c+")");
+                    if (num_print == 0)
+                    {
+                        answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
+                    }
+                    else
+                    {
+                        answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
+                    }
+                    ++num_print;
 
-                    int d; int e; int f;
-                    d = check_for_zero(one_board(n,board))[0][0];
-                    e = check_for_zero(one_board(n,board))[2][1];
-                    f = type_1_vertical(check_for_zero(one_board(n,board))[2][1],one_board(n,board));
-                    System.out.print(" ("+d+","+e+","+f+")\n");
+                    for (int i = 0; i < 2; ++i)
+                    {
+                        int aa = vertical(check_for_zero(board)[i][1], board);
+                        int xx = check_for_zero(board)[i][0];
+                        int yy = check_for_zero(board)[i][1];
 
-                }
-                // this one if for an L shape
-                else if (three_missing(check_for_zero(one_board(n,board))) == 3)
-                {
-                    // main logic
-                    int x; int y; int z;
-                    x = check_for_zero(one_board(n,board))[0][0];
-                    y = check_for_zero(one_board(n,board))[0][1];
-                    z = type_1_horizontal(check_for_zero(one_board(n,board))[0][0],one_board(n,board));
-                    // changing the board to be the unknown, so we can solve the other to
-                    board[x][y] = z;
-                    System.out.print("("+x+","+y+","+z+")");
-
-                    int a; int b; int c;
-                    a = check_for_zero(one_board(n,board))[0][0];
-                    b = check_for_zero(one_board(n,board))[0][1];
-                    c = type_1_vertical(check_for_zero(one_board(n,board))[0][1],one_board(n,board));
-                    System.out.print(" ("+a+","+b+","+c+")");
-
-                    int d; int e; int f;
-                    d = check_for_zero(one_board(n,board))[1][0];
-                    e = check_for_zero(one_board(n,board))[1][1];
-                    f = type_1_vertical(check_for_zero(one_board(n,board))[1][1],one_board(n,board));
-                    System.out.print(" ("+d+","+e+","+f+")\n");
-
-                }
-                // this one is for an upside down L
-                else if (three_missing(check_for_zero(one_board(n,board))) == 4)
-                {
-                    // main logic
-                    int x; int y; int z;
-                    x = check_for_zero(one_board(n,board))[2][0];
-                    y = check_for_zero(one_board(n,board))[2][1];
-                    z = type_1_horizontal(check_for_zero(one_board(n,board))[2][0],one_board(n,board));
-                    // changing the board to be the unknown, so we can solve the other to
-                    board[x][y] = z;
-                    System.out.print("("+x+","+y+","+z+")");
-
-                    int a; int b; int c;
-                    a = check_for_zero(one_board(n,board))[0][0];
-                    b = check_for_zero(one_board(n,board))[0][1];
-                    c = type_1_vertical(check_for_zero(one_board(n,board))[0][1],one_board(n,board));
-                    System.out.print(" ("+a+","+b+","+c+")");
-
-                    int d; int e; int f;
-                    d = check_for_zero(one_board(n,board))[1][0];
-                    e = check_for_zero(one_board(n,board))[1][1];
-                    f = type_1_vertical(check_for_zero(one_board(n,board))[1][1],one_board(n,board));
-                    System.out.print(" ("+d+","+e+","+f+")\n");
-
-                } 
-                else
-                {
-                    System.out.println("Malfunction");
+                        answers.append(" (").append(xx).append(",").append(yy).append(",").append(aa).append(")");
+                        ++num_print;
+                    }
                 }
             }
         }
 
-        // printing the end statement as per the instructions
+        // print_answers(answers, num_boards);
+        System.out.println(answers);
         System.out.println("END");
+<<<<<<< HEAD
 
         // closing the scanner
         scnr.close();
@@ -255,6 +322,30 @@ public class Suduko {
         return s_board;
     }
 
+=======
+    }
+
+    // method early on to print a particular board to make sure it is working
+    public static void print_board(int[][] board){
+
+        for (int i = 0; i < 9; ++i) 
+        {
+            for(int j = 0; j < 9; ++j)
+            {
+                System.out.print(board[i][j]);
+                if (j != 8) {
+                    System.out.print(" ");
+                } 
+                if (j == 8 & i != 8) 
+                {
+                    System.out.println();
+                }
+            }
+        }
+        System.out.println();
+    }
+
+>>>>>>> string_concat
     // finds how many zeros there are and puts them into an array to come back to
     public static int[][] check_for_zero(int[][] board){
 
@@ -294,7 +385,7 @@ public class Suduko {
     }
 
 
-    public static int type_1_vertical(int y, int[][] board){
+    public static int vertical(int col, int[][] board){
 
         // array with all numbers in column
         int[] numbers = new int[9];
@@ -302,15 +393,17 @@ public class Suduko {
         // puts all numbers in a column in here and sorts to find the missing one
         for (int i = 0; i < 9; ++ i)
         {
-            numbers[i] = board[i][y];
+            numbers[i] = board[i][col];
         }
         Arrays.sort(numbers);
 
         // finds the missing one and returns the value to be put in a print statement
         int missing_int = 9;
 
-        for (int i = 1; i < 9; ++i){
-            if (numbers[i] != i){
+        for (int i = 1; i < 9; ++i)
+        {
+            if (numbers[i] != i)
+            {
                 missing_int = i;
                 break;
             }
@@ -319,20 +412,26 @@ public class Suduko {
     }
 
 
-    public static int type_1_horizontal(int x, int[][] board){
+    public static int horizontal(int row, int[][] board){
 
         // array with all numbers in row
         int[] numbers = new int[9];
 
         // puts all numbers in a row in here and sorts to find the missing one
+<<<<<<< HEAD
         System.arraycopy(board[x], 0, numbers, 0, 9);
+=======
+        System.arraycopy(board[row], 0, numbers, 0, 9);
+>>>>>>> string_concat
         Arrays.sort(numbers);
 
         // finds the missing one and returns the value to be put in a print statement
         int missing_int = 9;
 
-        for (int i = 1; i < 9; ++i){
-            if (numbers[i] != i){
+        for (int i = 1; i < 9; ++i)
+        {
+            if (numbers[i] != i)
+            {
                 missing_int = i;
                 break;
             }
@@ -340,6 +439,7 @@ public class Suduko {
         return missing_int;
     }
 
+<<<<<<< HEAD
     // takes in the massive board and prints it right back with the correct formatting
     public static void print_all_boards(int num_boards, int[][] board){
 
@@ -386,6 +486,8 @@ public class Suduko {
             }
         }
     }
+=======
+>>>>>>> string_concat
 
     // determine which way we need to solve with two missing
     public static boolean two_missing(int[][] zero_cord){
@@ -422,4 +524,6 @@ public class Suduko {
             return 5;
         }
     }
+
 }
+

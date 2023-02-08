@@ -3,7 +3,11 @@
     <option name="myName" value="Project Default" />
     <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <Languages>
+<<<<<<< HEAD
         <language minSize="135" name="Java" />
+=======
+        <language minSize="117" name="Java" />
+>>>>>>> string_concat
         <language minSize="112" name="Python" />
       </Languages>
     </inspection_tool>
