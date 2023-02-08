@@ -24,127 +24,214 @@ public class Suduko {
         Scanner scnr = new Scanner(System.in);
 
         // initializing the answer array
-        int[][][] answers = new int[9][3][3];
+        StringBuilder answers = new StringBuilder();
+        int num_print = 0;
 
         // while loop to scan in one board at a time
-        while (true)
-        {
+        while (true) {
             int[][] board = new int[9][9];
 
             int board_total = 0;
-            for (int row = 0; row < 9; ++row)
-            {
+            for (int row = 0; row < 9; ++row) {
                 int row_total = 0;
-                for (int col = 0; col < 9; ++col)
-                {
+                for (int col = 0; col < 9; ++col) {
                     int num = scnr.nextInt();
                     board[row][col] = num;
                     row_total = row_total + num;
                 }
                 board_total = board_total + row_total;
             }
-            if (board_total == 0)
-            {
+            if (board_total == 0) {
                 int[][] zero_board = new int[9][9];
                 print_board(zero_board);
                 scnr.close();
                 break;
-            }
-            else
-            {
-                if (num_boards == 0)
-                {
+            } else {
+                if (num_boards == 0) {
                     System.out.println();
                 }
                 print_board(board);
-                ++ num_boards;
+                ++num_boards;
             }
 
             // solving the board and putting the coordinates and answer in an array
             // one missing in a board
-            if (check_for_zero(board).length == 1)
-            {
-                answers[num_boards-1][0][0] = horizontal(check_for_zero(board)[0][0], board);
-                answers[num_boards-1][0][1] = check_for_zero(board)[0][0];
-                answers[num_boards-1][0][2] = check_for_zero(board)[0][1];
+
+            if (check_for_zero(board).length == 1) {
+                int a = horizontal(check_for_zero(board)[0][0], board);
+                int x = check_for_zero(board)[0][0];
+                int y = check_for_zero(board)[0][1];
+                if (num_print == 0) {
+                    answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
+                    ++num_print;
+                } else {
+                    answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
+                    ++num_print;
+                }
             }
             // two missing in a board
-            else if (check_for_zero(board).length == 2)
-            {
+            else if (check_for_zero(board).length == 2) {
                 // need to solve both horizontally
-                if (two_missing(check_for_zero(board)))
-                {
-                    for (int i = 0; i < 2; ++i)
-                    {
-                        answers[num_boards-1][i][0] = horizontal(check_for_zero(board)[i][0], board);
-                        answers[num_boards-1][i][1] = check_for_zero(board)[i][0];
-                        answers[num_boards-1][i][2] = check_for_zero(board)[i][1];
+                if (two_missing(check_for_zero(board))) {
+                    int num_row = 0;
+                    for (int i = 0; i < 2; ++i) {
+                        int a = horizontal(check_for_zero(board)[i][0], board);
+                        int x = check_for_zero(board)[i][0];
+                        int y = check_for_zero(board)[i][1];
+
+                        if (num_print == 0 & num_row == 0) {
+                            answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else if (num_print != 0 & num_row == 0) {
+                            answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else {
+                            answers.append(" (").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        }
                     }
                 }
                 // need to solve both vertically
                 else {
-                    for (int i = 0; i < 2; ++i)
-                    {
-                        answers[num_boards-1][i][0] = vertical(check_for_zero(board)[i][1], board);
-                        answers[num_boards-1][i][1] = check_for_zero(board)[i][0];
-                        answers[num_boards-1][i][2] = check_for_zero(board)[i][1];
+                    int num_row = 0;
+                    for (int i = 0; i < 2; ++i) {
+                        int a = vertical(check_for_zero(board)[i][1], board);
+                        int x = check_for_zero(board)[i][0];
+                        int y = check_for_zero(board)[i][1];
+
+                        if (num_print == 0 & num_row == 0) {
+                            answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else if (num_print != 0 & num_row == 0) {
+                            answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else {
+                            answers.append(" (").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        }
                     }
                 }
             }
             // three missing in a board
-            else if (check_for_zero(board).length == 3)
-            {
+            else if (check_for_zero(board).length == 3) {
                 // need to solve all horizontally
-                if (three_missing(check_for_zero(board)) == 1)
-                {
-                    for (int i = 0; i < 3; ++i)
-                    {
-                        answers[num_boards - 1][i][0] = horizontal(check_for_zero(board)[i][0], board);
-                        answers[num_boards - 1][i][1] = check_for_zero(board)[i][0];
-                        answers[num_boards - 1][i][2] = check_for_zero(board)[i][1];
+                if (three_missing(check_for_zero(board)) == 1) {
+                    int num_row = 0;
+                    for (int i = 0; i < 3; ++i) {
+                        int a = horizontal(check_for_zero(board)[i][0], board);
+                        int x = check_for_zero(board)[i][0];
+                        int y = check_for_zero(board)[i][1];
+
+                        if (num_print == 0 & num_row == 0) {
+                            answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else if (num_print != 0 & num_row == 0) {
+                            answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else {
+                            answers.append(" (").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        }
                     }
                 }
                 // need to solve all vertically
-                else if (three_missing(check_for_zero(board)) == 2)
-                {
-                    for (int i = 0; i < 3; ++i)
-                    {
-                        answers[num_boards-1][i][0] = vertical(check_for_zero(board)[i][1], board);
-                        answers[num_boards-1][i][1] = check_for_zero(board)[i][0];
-                        answers[num_boards-1][i][2] = check_for_zero(board)[i][1];
+                else if (three_missing(check_for_zero(board)) == 2) {
+                    int num_row = 0;
+                    for (int i = 0; i < 3; ++i) {
+                        int a = vertical(check_for_zero(board)[i][1], board);
+                        int x = check_for_zero(board)[i][0];
+                        int y = check_for_zero(board)[i][1];
+
+                        if (num_print == 0 & num_row == 0) {
+                            answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else if (num_print != 0 & num_row == 0) {
+                            answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        } else {
+                            answers.append(" (").append(x).append(",").append(y).append(",").append(a).append(")");
+                            ++num_print;
+                            ++num_row;
+                        }
                     }
                 }
                 // need to solve first one horizontally and then the other two vertically once we put the other back into the board
-                else if (three_missing(check_for_zero(board)) == 3)
-                {
-                    answers[num_boards-1][0][0] = horizontal(check_for_zero(board)[0][0], board);
-                    answers[num_boards-1][0][1] = check_for_zero(board)[0][0];
-                    answers[num_boards-1][0][2] = check_for_zero(board)[0][1];
+                else if (three_missing(check_for_zero(board)) == 3) {
+
+                    int a = horizontal(check_for_zero(board)[0][0], board);
+                    int x = check_for_zero(board)[0][0];
+                    int y = check_for_zero(board)[0][1];
                     board[check_for_zero(board)[0][0]][check_for_zero(board)[0][1]] = horizontal(check_for_zero(board)[0][0], board);
+
+                    if (num_print == 0)
+                    {
+                        answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
+                        ++num_print;
+                    }
+                    else
+                    {
+                        answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
+                        ++num_print;
+                    }
+
+                    int num_row = 0;
                     for (int i = 0; i < 2; ++i)
                     {
-                        answers[num_boards-1][i+1][0] = vertical(check_for_zero(board)[i][1], board);
-                        answers[num_boards-1][i+1][1] = check_for_zero(board)[i][0];
-                        answers[num_boards-1][i+1][2] = check_for_zero(board)[i][1];
+                        int aa = vertical(check_for_zero(board)[i][1], board);
+                        int xx = check_for_zero(board)[i][0];
+                        int yy = check_for_zero(board)[i][1];
+
+                        answers.append(" (").append(xx).append(",").append(yy).append(",").append(aa).append(")");
+                        ++num_print;
+                        ++num_row;
                     }
                 }
                 // need to solve the last one horizontally and then the other two vertically once we put the other back into the board
-                else if (three_missing(check_for_zero(board)) == 4)
-                {
-                    answers[num_boards-1][0][0] = horizontal(check_for_zero(board)[2][0], board);
-                    answers[num_boards-1][0][1] = check_for_zero(board)[2][0];
-                    answers[num_boards-1][0][2] = check_for_zero(board)[2][1];
+                else if (three_missing(check_for_zero(board)) == 4) {
+                    int a = horizontal(check_for_zero(board)[2][0], board);
+                    int x = check_for_zero(board)[2][0];
+                    int y = check_for_zero(board)[2][1];
                     board[check_for_zero(board)[2][0]][check_for_zero(board)[2][1]] = horizontal(check_for_zero(board)[2][0], board);
+
+                    if (num_print == 0)
+                    {
+                        answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
+                        ++num_print;
+                    }
+                    else
+                    {
+                        answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
+                        ++num_print;
+                    }
+
+                    int num_row = 0;
                     for (int i = 0; i < 2; ++i)
                     {
-                        answers[num_boards-1][i+1][0] = vertical(check_for_zero(board)[i][1], board);
-                        answers[num_boards-1][i+1][1] = check_for_zero(board)[i][0];
-                        answers[num_boards-1][i+1][2] = check_for_zero(board)[i][1];
+                        int aa = vertical(check_for_zero(board)[i][1], board);
+                        int xx = check_for_zero(board)[i][0];
+                        int yy = check_for_zero(board)[i][1];
+
+                        answers.append(" (").append(xx).append(",").append(yy).append(",").append(aa).append(")");
+                        ++num_print;
+                        ++num_row;
                     }
                 }
             }
         }
-        print_answers(answers, num_boards);
+
+        // print_answers(answers, num_boards);
+        System.out.println(answers);
         System.out.println("END");
     }
 
