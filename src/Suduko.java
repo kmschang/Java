@@ -185,7 +185,6 @@ public class Suduko {
                         ++num_print;
                     }
 
-                    int num_row = 0;
                     for (int i = 0; i < 2; ++i)
                     {
                         int aa = vertical(check_for_zero(board)[i][1], board);
@@ -194,7 +193,6 @@ public class Suduko {
 
                         answers.append(" (").append(xx).append(",").append(yy).append(",").append(aa).append(")");
                         ++num_print;
-                        ++num_row;
                     }
                 }
                 // need to solve the last one horizontally and then the other two vertically once we put the other back into the board
@@ -215,7 +213,6 @@ public class Suduko {
                         ++num_print;
                     }
 
-                    int num_row = 0;
                     for (int i = 0; i < 2; ++i)
                     {
                         int aa = vertical(check_for_zero(board)[i][1], board);
@@ -224,7 +221,6 @@ public class Suduko {
 
                         answers.append(" (").append(xx).append(",").append(yy).append(",").append(aa).append(")");
                         ++num_print;
-                        ++num_row;
                     }
                 }
             }
@@ -378,39 +374,6 @@ public class Suduko {
         {
             // combination doesn't work, which it should never.
             return 5;
-        }
-    }
-
-
-    public static void print_answers(int[][][] ans, int num_boards){
-
-        for (int boa = 0; boa < num_boards; ++ boa)
-        {
-            int num_results = 0;
-            for (int set = 0; set < 3; ++ set)
-            {
-                if (ans[boa][set][0] == 0){
-                    set = 2;
-                }
-                else
-                {
-                    ++ num_results;
-                }
-            }
-
-            if (num_results == 1){
-                System.out.println("("+ans[boa][0][1]+","+ans[boa][0][2]+","+ans[boa][0][0]+")");
-            }
-            else if (num_results == 2){
-                System.out.print("("+ans[boa][0][1]+","+ans[boa][0][2]+","+ans[boa][0][0]+")");
-                System.out.print(" ("+ans[boa][1][1]+","+ans[boa][1][2]+","+ans[boa][1][0]+")\n");
-            }
-            else
-            {
-                System.out.print("("+ans[boa][0][1]+","+ans[boa][0][2]+","+ans[boa][0][0]+")");
-                System.out.print(" ("+ans[boa][1][1]+","+ans[boa][1][2]+","+ans[boa][1][0]+")");
-                System.out.print(" ("+ans[boa][2][1]+","+ans[boa][2][2]+","+ans[boa][2][0]+")\n");
-            }
         }
     }
 
