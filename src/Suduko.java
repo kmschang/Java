@@ -9,7 +9,6 @@ public class Suduko {
         int num_zero;
 
         do {
-
             // number of zeros in a given board
             num_zero = 0;
 
@@ -17,9 +16,8 @@ public class Suduko {
             int[][] board = new int[9][9];
 
             // initializing the answer
-            int[] x_cord = new int[3];
-            int[] y_cord = new int[3];
-
+            int[] x_cord = new int[4];
+            int[] y_cord = new int[4];
 
             for (int row = 0; row < 9; ++ row)
             {
@@ -27,7 +25,7 @@ public class Suduko {
                 {
                     int num = scnr.nextInt();
                     board[row][col] = num;
-                    if (num == 0)
+                    if (num == 0 & num_zero < 4)
                     {
                         x_cord[num_zero] = row;
                         y_cord[num_zero] = col;
@@ -37,43 +35,43 @@ public class Suduko {
             }
 
             if (num_zero == 1){
-                System.out.println("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(y_cord[0],board) + ")");
+                System.out.println("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
             }
             if (num_zero == 2){
-                if (x_cord[0] == x_cord[1]){
-                    System.out.println("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(y_cord[0],board) + ")");
-                    System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + horizontal(y_cord[1],board) + ")");
+                if (x_cord[0] != x_cord[1]){
+                    System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
+                    System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + horizontal(x_cord[1],board) + ")");
                 } else {
-                    System.out.println("(" + x_cord[0] + "," + y_cord[0] + "," + vertical(x_cord[0],board) + ")");
-                    System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(x_cord[1],board) + ")");
+                    System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + vertical(y_cord[0],board) + ")");
+                    System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(y_cord[1],board) + ")");
                 }
             }
             if (num_zero == 3){
-                if (x_cord[0] == x_cord[1] & x_cord[0] == x_cord[2]){
-                    System.out.println("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(y_cord[0],board) + ")");
-                    System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + horizontal(y_cord[1],board) + ")");
-                    System.out.print(" (" + x_cord[2] + "," + y_cord[2] + "," + horizontal(y_cord[2],board) + ")");
-                } else if (y_cord[0] == y_cord[1] & y_cord[0] == y_cord[2]){
-                    System.out.println("(" + x_cord[0] + "," + y_cord[0] + "," + vertical(x_cord[0],board) + ")");
-                    System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(x_cord[1],board) + ")");
-                    System.out.print(" (" + x_cord[2] + "," + y_cord[2] + "," + vertical(x_cord[2],board) + ")");
+                if (y_cord[0] == y_cord[1] & y_cord[0] == y_cord[2]){
+                    System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
+                    System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + horizontal(x_cord[1],board) + ")");
+                    System.out.print(" (" + x_cord[2] + "," + y_cord[2] + "," + horizontal(x_cord[2],board) + ")");
+                } else if (x_cord[0] == x_cord[1] & x_cord[0] == x_cord[2]){
+                    System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + vertical(y_cord[0],board) + ")");
+                    System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(y_cord[1],board) + ")");
+                    System.out.print(" (" + x_cord[2] + "," + y_cord[2] + "," + vertical(y_cord[2],board) + ")");
                 } else if (x_cord[0] != x_cord[1] & x_cord[1] == x_cord[2]){
                     // solve the first one horizontally and set it in the board, so we can solve the other two vertically
-                    System.out.println("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(y_cord[0],board) + ")");
-                    board[x_cord[0]][y_cord[0]] = horizontal(y_cord[0],board);
-                    System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(x_cord[1],board) + ")");
-                    System.out.print(" (" + x_cord[2] + "," + y_cord[2] + "," + vertical(x_cord[2],board) + ")");
+                    System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
+                    board[x_cord[0]][y_cord[0]] = horizontal(x_cord[0],board);
+                    System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(y_cord[1],board) + ")");
+                    System.out.print(" (" + x_cord[2] + "," + y_cord[2] + "," + vertical(y_cord[2],board) + ")");
                 } else {
                     //  solve the last one horizontally and set it in the board, so we can solve the other two vertically
-                    System.out.println("(" + x_cord[2] + "," + y_cord[2] + "," + horizontal(y_cord[2],board) + ")");
-                    board[x_cord[2]][y_cord[2]] = horizontal(y_cord[2],board);
-                    System.out.print(" (" + x_cord[0] + "," + y_cord[0] + "," + vertical(x_cord[0],board) + ")");
-                    System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(x_cord[1],board) + ")");
+                    System.out.print("(" + x_cord[2] + "," + y_cord[2] + "," + horizontal(x_cord[2],board) + ")");
+                    board[x_cord[2]][y_cord[2]] = horizontal(x_cord[2],board);
+                    System.out.print(" (" + x_cord[0] + "," + y_cord[0] + "," + vertical(y_cord[0],board) + ")");
+                    System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(y_cord[1],board) + ")");
                 }
             }
-        } while (num_zero < 81);
+        } while (num_zero < 4);
         scnr.close();
-        System.out.println("END");
+        System.out.println("\nEND");
     }
 
 
