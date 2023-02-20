@@ -35,35 +35,35 @@ public class Suduko {
             }
 
             if (num_zero == 1){
-                System.out.println("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
+                System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
             }
             if (num_zero == 2){
                 if (x_cord[0] != x_cord[1]){
-                    System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
+                    System.out.print("\n(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
                     System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + horizontal(x_cord[1],board) + ")");
                 } else {
-                    System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + vertical(y_cord[0],board) + ")");
+                    System.out.print("\n(" + x_cord[0] + "," + y_cord[0] + "," + vertical(y_cord[0],board) + ")");
                     System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(y_cord[1],board) + ")");
                 }
             }
             if (num_zero == 3){
                 if (y_cord[0] == y_cord[1] & y_cord[0] == y_cord[2]){
-                    System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
+                    System.out.print("\n(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
                     System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + horizontal(x_cord[1],board) + ")");
                     System.out.print(" (" + x_cord[2] + "," + y_cord[2] + "," + horizontal(x_cord[2],board) + ")");
                 } else if (x_cord[0] == x_cord[1] & x_cord[0] == x_cord[2]){
-                    System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + vertical(y_cord[0],board) + ")");
+                    System.out.print("\n(" + x_cord[0] + "," + y_cord[0] + "," + vertical(y_cord[0],board) + ")");
                     System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(y_cord[1],board) + ")");
                     System.out.print(" (" + x_cord[2] + "," + y_cord[2] + "," + vertical(y_cord[2],board) + ")");
                 } else if (x_cord[0] != x_cord[1] & x_cord[1] == x_cord[2]){
                     // solve the first one horizontally and set it in the board, so we can solve the other two vertically
-                    System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
+                    System.out.print("\n(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
                     board[x_cord[0]][y_cord[0]] = horizontal(x_cord[0],board);
                     System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(y_cord[1],board) + ")");
                     System.out.print(" (" + x_cord[2] + "," + y_cord[2] + "," + vertical(y_cord[2],board) + ")");
                 } else {
                     //  solve the last one horizontally and set it in the board, so we can solve the other two vertically
-                    System.out.print("(" + x_cord[2] + "," + y_cord[2] + "," + horizontal(x_cord[2],board) + ")");
+                    System.out.print("\n(" + x_cord[2] + "," + y_cord[2] + "," + horizontal(x_cord[2],board) + ")");
                     board[x_cord[2]][y_cord[2]] = horizontal(x_cord[2],board);
                     System.out.print(" (" + x_cord[0] + "," + y_cord[0] + "," + vertical(y_cord[0],board) + ")");
                     System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(y_cord[1],board) + ")");
