@@ -1,13 +1,6 @@
 /*
  * Kyle Schang
  * EECS 1510
- * Started Jan  31st  - Finished Feb 7th - 35 hours Total
- *
- * This is my program used to solve an unknown number of Suduko boards. It takes in all the numbers with one big scanner and put it into one big multidimensional array.
- * Then it takes them out one board at a time and solves them. After solving, it puts the answers into an array and at the end, it prints all the solutions.
- * I tried to use as many functions as I could, but it got a lot because I had to input functions into functions.
- * The hardest part was trying to figure out how to take everything in with one scanner with an unknown amount of boards and then still solve them.
- * The second-hardest part was wrapping my head around arrays and making them all fit and work together.
  *
  */
 
