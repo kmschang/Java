@@ -1,13 +1,29 @@
+/*
+ * Kyle Schang
+ * EECS 1510
+ *
+ * Suduko Project
+ *
+ * Do loop to find the all zero board. While scanning them in, I check for zero and report where they are. I then later check for what type of problem it is. Then I solve it and print the answers to the console.
+ *
+ */
+
+
+// import scanner
 import java.util.*;
 
 public class Suduko {
 
     public static void main(String[] args){
 
+        // initializing scanner
         Scanner scnr = new Scanner(System.in);
 
+        // initializing variables
         int num_zero;
+        int num_board = 0;
 
+        // main loop to scan board and solve. Checking until board = 0.
         do {
             // number of zeros in a given board
             num_zero = 0;
@@ -19,6 +35,7 @@ public class Suduko {
             int[] x_cord = new int[4];
             int[] y_cord = new int[4];
 
+            // for loop to make the board in array form and see where the zeros are
             for (int row = 0; row < 9; ++ row)
             {
                 for (int col = 0; col < 9; ++ col)
@@ -34,44 +51,70 @@ public class Suduko {
                 }
             }
 
-            if (num_zero == 1){
+            // Printing Formatting
+            if (num_board != 0)
+            {
+                System.out.print("\n");
+            }
+
+            // printing the results using other methods to find the missing variable
+            if (num_zero == 1)
+            {
+                // solves horizontally
                 System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
             }
-            if (num_zero == 2){
-                if (x_cord[0] != x_cord[1]){
-                    System.out.print("\n(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
+            if (num_zero == 2)
+            {
+                if (x_cord[0] != x_cord[1])
+                {
+                    // solves both horizontally
+                    System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
                     System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + horizontal(x_cord[1],board) + ")");
-                } else {
-                    System.out.print("\n(" + x_cord[0] + "," + y_cord[0] + "," + vertical(y_cord[0],board) + ")");
+                }
+                else
+                {
+                    // solves both vertically
+                    System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + vertical(y_cord[0],board) + ")");
                     System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(y_cord[1],board) + ")");
                 }
             }
-            if (num_zero == 3){
-                if (y_cord[0] == y_cord[1] & y_cord[0] == y_cord[2]){
-                    System.out.print("\n(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
+            if (num_zero == 3)
+            {
+                if (y_cord[0] == y_cord[1] & y_cord[0] == y_cord[2])
+                {
+                    // solves them all horizontally
+                    System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
                     System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + horizontal(x_cord[1],board) + ")");
                     System.out.print(" (" + x_cord[2] + "," + y_cord[2] + "," + horizontal(x_cord[2],board) + ")");
-                } else if (x_cord[0] == x_cord[1] & x_cord[0] == x_cord[2]){
-                    System.out.print("\n(" + x_cord[0] + "," + y_cord[0] + "," + vertical(y_cord[0],board) + ")");
+                }
+                else if (x_cord[0] == x_cord[1] & x_cord[0] == x_cord[2])
+                {
+                    // solves them all vertically
+                    System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + vertical(y_cord[0],board) + ")");
                     System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(y_cord[1],board) + ")");
                     System.out.print(" (" + x_cord[2] + "," + y_cord[2] + "," + vertical(y_cord[2],board) + ")");
-                } else if (x_cord[0] != x_cord[1] & x_cord[1] == x_cord[2]){
+                }
+                else if (x_cord[0] != x_cord[1] & x_cord[1] == x_cord[2])
+                {
                     // solve the first one horizontally and set it in the board, so we can solve the other two vertically
-                    System.out.print("\n(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
+                    System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
                     board[x_cord[0]][y_cord[0]] = horizontal(x_cord[0],board);
                     System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(y_cord[1],board) + ")");
                     System.out.print(" (" + x_cord[2] + "," + y_cord[2] + "," + vertical(y_cord[2],board) + ")");
-                } else {
+                }
+                else
+                {
                     //  solve the last one horizontally and set it in the board, so we can solve the other two vertically
-                    System.out.print("\n(" + x_cord[2] + "," + y_cord[2] + "," + horizontal(x_cord[2],board) + ")");
+                    System.out.print("(" + x_cord[2] + "," + y_cord[2] + "," + horizontal(x_cord[2],board) + ")");
                     board[x_cord[2]][y_cord[2]] = horizontal(x_cord[2],board);
                     System.out.print(" (" + x_cord[0] + "," + y_cord[0] + "," + vertical(y_cord[0],board) + ")");
                     System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(y_cord[1],board) + ")");
                 }
             }
+            ++ num_board;
         } while (num_zero < 4);
         scnr.close();
-        System.out.println("\nEND");
+        System.out.println("END");
     }
 
 
@@ -124,7 +167,5 @@ public class Suduko {
         }
         return missing_int;
     }
-
-
 
 }
