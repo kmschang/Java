@@ -57,12 +57,14 @@ public class Suduko {
                 System.out.print("\n");
             }
 
-            // printing the results using other methods to find the missing variable
+            // printing the results using other methods to find the missing variable/s
+            // one missing variable
             if (num_zero == 1)
             {
                 // solves horizontally
                 System.out.print("(" + x_cord[0] + "," + y_cord[0] + "," + horizontal(x_cord[0],board) + ")");
             }
+            // two missing variables
             if (num_zero == 2)
             {
                 if (x_cord[0] != x_cord[1])
@@ -78,6 +80,7 @@ public class Suduko {
                     System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(y_cord[1],board) + ")");
                 }
             }
+            // three missing variables
             if (num_zero == 3)
             {
                 if (y_cord[0] == y_cord[1] & y_cord[0] == y_cord[2])
@@ -111,9 +114,14 @@ public class Suduko {
                     System.out.print(" (" + x_cord[1] + "," + y_cord[1] + "," + vertical(y_cord[1],board) + ")");
                 }
             }
+            // used with formatting the answer
             ++ num_board;
         } while (num_zero < 4);
+
+        // close scanner
         scnr.close();
+
+        // print END to finish off program
         System.out.println("END");
     }
 
