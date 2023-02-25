@@ -20,6 +20,8 @@ public class Suduko {
         Scanner scnr = new Scanner(System.in);
 
         // initializing variables
+        // num_zero for the number of zeros found in the board, used to determine which way to solve
+        // num_board for the number of boards that have been scanned in, used for formatting at the end
         int num_zero;
         int num_board = 0;
 
@@ -31,7 +33,7 @@ public class Suduko {
             // initializing the board
             int[][] board = new int[9][9];
 
-            // initializing the answer
+            // initializing the answer, one array for the x values and one for the y values, the indexes should match up
             int[] x_cord = new int[4];
             int[] y_cord = new int[4];
 
@@ -40,6 +42,7 @@ public class Suduko {
             {
                 for (int col = 0; col < 9; ++ col)
                 {
+                    // num is a placeholder, the number that was just scanned, that way I can use if more than once in the block of code
                     int num = scnr.nextInt();
                     board[row][col] = num;
                     if (num == 0 & num_zero < 4)
@@ -138,7 +141,7 @@ public class Suduko {
         }
         Arrays.sort(numbers);
 
-        // finds the missing one and returns the value to be put in a print statement
+        // finds the missing one and returns the value to be put in a print statement, by default its 9 to eliminate and else statement
         int missing_int = 9;
 
         for (int i = 1; i < 9; ++i)
@@ -162,7 +165,7 @@ public class Suduko {
         System.arraycopy(board[row], 0, numbers, 0, 9);
         Arrays.sort(numbers);
 
-        // finds the missing one and returns the value to be put in a print statement
+        // finds the missing one and returns the value to be put in a print statement, by default its 9 to eliminate and else statement
         int missing_int = 9;
 
         for (int i = 1; i < 9; ++i)
