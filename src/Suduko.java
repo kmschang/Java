@@ -8,6 +8,10 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
+/*
+The way that Hobbs wants it is in the updated parameters branch
+ */
+
 public class Suduko {
 
     public static void main(String[] args) {
