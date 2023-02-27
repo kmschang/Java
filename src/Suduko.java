@@ -12,7 +12,7 @@ public class Suduko {
 
     public static void main(String[] args) {
 
-        // initializing the number of boards to zero
+        // initializing the number of boards to zero.
         int num_boards = 0;
         Scanner scnr = new Scanner(System.in);
 
