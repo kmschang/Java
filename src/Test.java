@@ -1,8 +1,9 @@
-public class Test {
-    private int x;
+public class Test{
 
-    public static void main(String[] args) {
-        Test foo = new Test();
-        System.out.println(foo.x);
+    public static void main(String[] args){
+
+        System.out.println("Hello World!");
+
     }
+
 }
