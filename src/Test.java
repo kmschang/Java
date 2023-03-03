@@ -129,3 +129,39 @@ class Parameters{
 
 
 }
+
+
+
+class Circle{
+
+    private final int radius;
+
+    Circle(){
+        radius = 1;
+    }
+
+    Circle(int r1){
+        radius = r1;
+    }
+
+
+    double getArea(int rad){
+        return rad * rad * Math.PI;
+    }
+
+    double getPerimeter(int rad){
+        return 2 * Math.PI * rad;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+}
