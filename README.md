@@ -1,3 +1,3 @@
 # Java
 
-## Sudoku
+## Java related projects
