@@ -7,6 +7,8 @@ public class SchangKyleProj1 {
     static int zeros = 0;
     static int row = 0;
     static int col = 0;
+    static int threebyrow = 0;
+    static int threebycol = 0;
     static int[][] location = new int[3][2];
     static Scanner scnr = new Scanner(System.in);
 
@@ -39,6 +41,26 @@ public class SchangKyleProj1 {
         row = 0; col = 0;
     }
 
+
+
+    public static void find_zero(){
+        int loc = 0; zeros = 0;
+        for (row = 0; row < 9; ++row){
+            for (col = 0; col < 9; ++ col){
+                if (board[row][col] == 0){
+                    location[loc][0] = row;
+                    location[loc][1] = col;
+                    ++ zeros;
+                    if (loc < 1) ++ loc;
+                }
+            }
+        }
+        location[2][0] = 0; location[2][1] = 0;
+    }
+
+
+
+
     public static void solveBoard(){
         if (zeros == 1){
             System.out.println("(" + location[0][0] + "," + location[0][1] + "," + typeOneH(location[0][0]) + ")");
@@ -48,9 +70,10 @@ public class SchangKyleProj1 {
             System.out.println(" (" + location[1][0] + "," + location[1][1] + "," + typeTwo()[1] + ")");
         }
         if (zeros == 3){
-            System.out.print("(" + location[0][0] + "," + location[0][1] + "," + typeThree()[0] + ")");
+            int answer1 = typeThree()[0];
+            System.out.print("(" + threebyrow + "," + threebycol + "," + answer1 + ")");
             System.out.print(" (" + location[0][0] + "," + location[0][1] + "," + typeThree()[1] + ")");
-            System.out.println(" (" + location[0][0] + "," + location[0][1] + "," + typeThree()[2] + ")");
+            System.out.println(" (" + location[1][0] + "," + location[1][1] + "," + typeThree()[2] + ")");
         }
     }
 
@@ -103,12 +126,17 @@ public class SchangKyleProj1 {
                 }
             }
         }
+
         for (int i = 0; i < 9; ++i){
             if (threeByCounts[i][0] == 1){
                 answers[0] = typeOneH(threeByCounts[i][1]);
                 board[threeByCounts[i][1]][threeByCounts[i][2]] = answers[0];
+                threebyrow = threeByCounts[i][1];
+                threebycol = threeByCounts[i][2];
             }
         }
+
+        find_zero();
         answers[1] = typeTwo()[0];
         answers[2] = typeTwo()[1];
         return answers;
