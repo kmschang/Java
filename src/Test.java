@@ -132,15 +132,15 @@ class Parameters{
 
 
 
-class Circle{
+class Circle1{
 
     private final int radius;
 
-    Circle(){
+    Circle1(){
         radius = 1;
     }
 
-    Circle(int r1){
+    Circle1(int r1){
         radius = r1;
     }
 

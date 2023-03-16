@@ -67,7 +67,7 @@ public class SchangKyleProj1
         // nested for loop to scan in the board
         for (row = 0; row < 9; ++row)
         {
-            for (col = 0; col < 9; ++ col)
+            for (col = 0; col < 9; ++col)
             {
                 board[row][col] = scnr.nextInt();
                 // checks to see if the one it just inputted was a zero, if it was, it stores the location for later.
@@ -75,7 +75,7 @@ public class SchangKyleProj1
                 {
                     location[loc][0] = row;
                     location[loc][1] = col;
-                    ++ zeros;
+                    ++zeros;
                     if (loc < 2) ++loc;
                 }
             }
@@ -94,14 +94,14 @@ public class SchangKyleProj1
         int loc = 0; zeros = 0;
 
         for (row = 0; row < 9; ++row){
-            for (col = 0; col < 9; ++ col)
+            for (col = 0; col < 9; ++col)
             {
                 if (board[row][col] == 0)
                 {
                     location[loc][0] = row;
                     location[loc][1] = col;
-                    ++ zeros;
-                    if (loc < 1) ++ loc;
+                    ++zeros;
+                    if (loc < 1) ++loc;
                 }
             }
         }
