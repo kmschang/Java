@@ -2,12 +2,25 @@ public class Shape {
 
     static double area;
     static double perimeter;
+    static double radius;
 
     Shape() {}
 
-    Shape(double area, double perimeter) {
-        Shape.area = area;
-        Shape.perimeter = perimeter;
+    Shape(double radius) throws InvalidParameterException{
+        if (radius < 0) {
+            throw new InvalidParameterException(radius);
+        } else {
+            Shape.radius = radius;
+        }
+    }
+
+    Shape(double area, double perimeter) throws InvalidParameterException{
+        if (area < 0 || perimeter < 0) {
+            throw new InvalidParameterException(area);
+        } else {
+            Shape.area = area;
+            Shape.perimeter = perimeter;
+        }
     }
 
     public static double getArea() {
@@ -21,18 +34,19 @@ public class Shape {
 
 
     public static void main(String[] args) {
-        Circle c1 = new Circle(0);
-
-        try{
-            if (c1.radius < 0) {
-                throw new InvalidRadiusException(c1.radius);
-            }
-            else if (c1.radius == 0) {
-                throw new ZeroRadiusException(c1.radius);
-            }
-        } catch (InvalidRadiusException | ZeroRadiusException e) {
-            System.out.println(e.getMessage());
+        try 
+        {
+            Circle c1 = new Circle(0);
+            System.out.println(c1.getArea());
+            Rectangle r1 = new Rectangle(2, 2);
+            System.out.println(r1.getPerimeter());
+        } 
+        catch (InvalidParameterException ex) 
+        {
+            System.out.println(ex.getMessage());
         }
+        
+
     }
 
 }
@@ -44,40 +58,71 @@ class Circle extends Shape {
 
     Circle() {}
 
-    Circle(double radius) {
-        Circle.radius = radius;
+    Circle(double radius) throws InvalidParameterException {
+        if (radius < 0) {
+            throw new InvalidParameterException(radius);
+        } else {
+            this.radius = radius;
+        }
+    }
+    
+    public static double getArea() {
+        return Math.PI * radius * radius;
     }
 
-    public static void setArea() {
-        area = Math.PI * radius * radius;
-    }
-
-    public static void setPerimeter() {
-        perimeter = 2 * Math.PI * radius;
-    }
-
-}
-
-class InvalidRadiusException extends Exception {
-
-    InvalidRadiusException() {
-        super("Invalid radius");
-    }
-
-    InvalidRadiusException(double radius) {
-        super("Invalid radius: " + radius);
+    public static double getPerimeter() {
+        return 2 * Math.PI * radius;
     }
 
 }
 
-class ZeroRadiusException extends Exception {
 
-    ZeroRadiusException() {
-        super("Zero radius");
+class Rectangle extends Shape {
+
+    static double width;
+    static double height;
+
+    Rectangle() {}
+
+    Rectangle(double width, double height) throws InvalidParameterException {
+        if (width < 0 || height < 0) {
+            throw new InvalidParameterException(width);
+        } else {
+            this.width = width;
+            this.height = height;
+        }
     }
 
-    ZeroRadiusException(double radius) {
-        super("Zero radius: " + radius);
+    public static double getArea() {
+        return width * height;
+    }
+
+    public static double getPerimeter() {
+        return 2 * (width + height);
     }
 
 }
+
+
+
+
+
+
+
+
+
+class InvalidParameterException extends Exception {
+
+    private double parameter;
+
+    InvalidParameterException(double parameter) {
+        super ("Invalid parameter: " + parameter);
+        this.parameter = parameter;
+    }
+
+    public double getParameter() {
+        return parameter;
+    }
+
+}
+
