@@ -78,6 +78,15 @@ class division extends SimpleMath {
 
 
 
+
+class inputs {
+
+
+
+}
+
+
+
 class InvalidDivision extends Exception {
 
     InvalidDivision(){}
