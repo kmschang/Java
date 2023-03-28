@@ -1,13 +1,22 @@
 public class SimpleMath {
 
-    static double num1;
-    static double num2;
+    double num1;
+    double num2;
+    double num3;
+
+    static double result;
 
     public static void main(String[] args) {
         try {
-            System.out.print(division.divide(10,0));
+            System.out.println(addition.add(5, 6));
+            System.out.println(division.divide(5, 0));
+            System.out.println(multiply.product(5, 6));
+            System.out.println(multiply.product(5, 6, 7));
         } catch (InvalidDivision id) {
-            System.out.print("Can't Divide by zero!!");
+            System.out.println("Can't Divide by zero!!");
+        } finally {
+            System.out.println(multiply.product(5, 6));
+            System.out.println(multiply.product(5, 6, 7));
         }
     }
 
@@ -15,14 +24,13 @@ public class SimpleMath {
 
 class multiply extends SimpleMath {
 
-    multiply(){}
-    multiply(double num1, double num2){
-        this.num1 = num1;
-        this.num2 = num2;
+    static double product(double num1, double num2){
+        result = num1 * num2;
+        return result;
     }
-
-    static double product(int num1, int num2){
-        return num1 * num2;
+    static double product(double num1, double num2, double num3){
+        result = num1 * num2 * num3;
+        return result;
     }
 
 }
@@ -76,14 +84,6 @@ class division extends SimpleMath {
     }
 }
 
-
-
-
-class inputs {
-
-
-
-}
 
 
 

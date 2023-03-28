@@ -13,6 +13,7 @@ public class test_SimpleMath {
     @DisplayName("Multiplication")
     void test_multiply() {
         assertEquals(10, multiply.product(2,5));
+        assertEquals(210, multiply.product(5,6,7));
     }
 
     @Test
