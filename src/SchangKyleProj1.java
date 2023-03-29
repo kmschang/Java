@@ -133,7 +133,7 @@ public class SchangKyleProj1
         if (zeros == 3)
         {
             int oneX = location[0][0]; int oneY = location[0][1]; int twoX = location[1][0]; int twoY = location[1][1]; int threeX = location[2][0]; int threeY = location[2][1];
-            int ans[] = typeThree();
+            int[] ans = typeThree();
             System.out.print("(" + oneX + "," + oneY + "," + ans[0] + ")");
             System.out.print(" (" + twoX + "," + twoY + "," + ans[1] + ")");
             System.out.println(" (" + threeX + "," + threeY + "," + ans[2] + ")");
@@ -218,8 +218,9 @@ public class SchangKyleProj1
         // we found the first one with the whichbox and threebycounts but now it is the time to find the other two
         // to find the other two, we just used the typeTwo function
 
-
-        if (location[0][0] != location[1][0] & location[1][0] == location[2][0]){
+        // using threeby to solve the functions
+        if (location[0][0] != location[1][0] & location[1][0] == location[2][0])
+        {
             // solve horizontally
             answers[0] = typeOneH(location[0][0]);
             board[location[0][0]][location[0][1]] = answers[0];
@@ -227,16 +228,15 @@ public class SchangKyleProj1
             location[0][1] = location[1][1]; location[1][1] = location[2][1];
             answers[1] = typeTwo()[0];
             answers[2] = typeTwo()[1];
-
-        } else {
+        }
+        else
+        {
             // solve vertically
             answers[2] = typeOneH(location[2][0]);
             board[location[2][0]][location[2][1]] = answers[2];
             answers[0] = typeTwo()[0];
             answers[1] = typeTwo()[1];
         }
-
-
 
         return answers;
 
