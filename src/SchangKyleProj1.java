@@ -208,7 +208,6 @@ public class SchangKyleProj1
         {
             if (threeByCounts[i][0] == 1)
             {
-                answers[0] = typeOneH(threeByCounts[i][1]);
                 board[threeByCounts[i][1]][threeByCounts[i][2]] = answers[0];
                 threebyrow = threeByCounts[i][1];
                 threebycol = threeByCounts[i][2];
@@ -217,10 +216,10 @@ public class SchangKyleProj1
         // the final functions to find the missing values
         // we found the first one with the whichbox and threebycounts but now it is the time to find the other two
         // to find the other two, we just used the typeTwo function
-        find_zero();
-        answers[1] = typeTwo()[0];
-        answers[2] = typeTwo()[1];
-        return answers;
+
+
+        // if (location[0][0] == location[1][0])
+
     }
 
 
