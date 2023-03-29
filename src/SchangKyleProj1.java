@@ -132,10 +132,11 @@ public class SchangKyleProj1
         // three zeros missing, solves with type three zero
         if (zeros == 3)
         {
-            int answer1 = typeThree()[0];
-            System.out.print("(" + threebyrow + "," + threebycol + "," + answer1 + ")");
-            System.out.print(" (" + location[0][0] + "," + location[0][1] + "," + typeThree()[1] + ")");
-            System.out.println(" (" + location[1][0] + "," + location[1][1] + "," + typeThree()[2] + ")");
+            int oneX = location[0][0]; int oneY = location[0][1]; int twoX = location[1][0]; int twoY = location[1][1]; int threeX = location[2][0]; int threeY = location[2][1];
+            int ans[] = typeThree();
+            System.out.print("(" + oneX + "," + oneY + "," + ans[0] + ")");
+            System.out.print(" (" + twoX + "," + twoY + "," + ans[1] + ")");
+            System.out.println(" (" + threeX + "," + threeY + "," + ans[2] + ")");
         }
     }
 
@@ -218,7 +219,26 @@ public class SchangKyleProj1
         // to find the other two, we just used the typeTwo function
 
 
-        // if (location[0][0] == location[1][0])
+        if (location[0][0] != location[1][0] & location[1][0] == location[2][0]){
+            // solve horizontally
+            answers[0] = typeOneH(location[0][0]);
+            board[location[0][0]][location[0][1]] = answers[0];
+            location[0][0] = location[1][0]; location[1][0] = location[2][0];
+            location[0][1] = location[1][1]; location[1][1] = location[2][1];
+            answers[1] = typeTwo()[0];
+            answers[2] = typeTwo()[1];
+
+        } else {
+            // solve vertically
+            answers[2] = typeOneH(location[2][0]);
+            board[location[2][0]][location[2][1]] = answers[2];
+            answers[0] = typeTwo()[0];
+            answers[1] = typeTwo()[1];
+        }
+
+
+
+        return answers;
 
     }
 
