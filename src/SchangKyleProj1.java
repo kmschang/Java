@@ -41,6 +41,9 @@ public class SchangKyleProj1
     // used to know the location of the zeros
     static int[][] location = new int[3][2];
 
+    // used for the test case
+    static int[][] answers = new int[3][3];
+
     // scanner used to take in the board from the user and put them into variables
     static Scanner scnr = new Scanner(System.in);
 
@@ -116,12 +119,15 @@ public class SchangKyleProj1
         if (zeros == 1)
         {
             System.out.println("(" + location[0][0] + "," + location[0][1] + "," + typeOneH(location[0][0]) + ")");
+            answers[0][0] = location[0][0]; answers[0][1] = location[0][1]; answers[0][2] = typeOneH(location[0][0]);
         }
         // two zeros missing, solves with type two zero
         if (zeros == 2)
         {
             System.out.print("(" + location[0][0] + "," + location[0][1] + "," + typeTwo()[0] + ")");
             System.out.println(" (" + location[1][0] + "," + location[1][1] + "," + typeTwo()[1] + ")");
+            answers[0][0] = location[0][0]; answers[0][1] = location[0][1]; answers[0][2] = typeTwo()[0];
+            answers[1][0] = location[1][0]; answers[1][1] = location[1][1]; answers[1][2] = typeTwo()[1];
         }
         // three zeros missing, solves with type three zero
         if (zeros == 3)
