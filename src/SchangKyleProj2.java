@@ -1,4 +1,15 @@
+/*
+Kyle Schang
+EECS 1510
+03-30-2023
+
+Started off with the main class Person. Then I made the class Student which extends Person. Then I made the class Undergraduate which extends Student.  
+
+ */
+
 public class SchangKyleProj2 {
+
+    // the name part is not working, it only shows the last students name for all of them. All the other parameters work fine.
 
     static class Person {
 
