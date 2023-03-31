@@ -3,7 +3,7 @@ Kyle Schang
 EECS 1510
 03-30-2023
 
-Started off with the main class Person. Then I made the class Student which extends Person. Then I made the class Undergraduate which extends Student.  
+Started off with the main class Person. Then I made the class Student which extends Person. Then I made the class Undergraduate which extends Student.
 
  */
 
