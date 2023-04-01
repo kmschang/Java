@@ -32,33 +32,7 @@ public class SchangKyleProj2 {
 
 
     // main class meant for test cases
-    public static void main(String[] args)
-    {
-
-        // making the new people
-        Person[] people = new Person[9];
-
-        // Setting all the people and the variables that go along with it
-        people[0] = new Undergraduate("Cotty, Manny", 4910, 1);
-        people[1] = new Undergraduate("Kick, Anita", 9931, 2);
-        people[2] = new Student("DeBanque, Robin", 8812);
-        people[3] = new Undergraduate("Bugg, June", 9901, 4);
-        people[4] = new Graduate("Schang, Kyle", 3351, 8);
-
-        people[5] = new Employee("Shan, Kathy", 2130);
-        people[6] = new Faculty("Cook, Jobs", 4356, "Cooking", "Head Chef");
-        people[7] = new Staff("Smith, Bob", 7453, "Custodian", 3);
-        people[8] = new Faculty("Jones, John", 1234, "Math", "Professor");
-
-
-        // loop for printing all the people to check variables work correctly
-        for (Person p : people) {
-
-            p.writeOutput();
-            System.out.println();
-        }
-
-    }
+    public static void main(String[] args) {}
 
 
     // Top Person class which everything is based off
