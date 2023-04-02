@@ -32,3 +32,4 @@ class B extends A {
 
 // Path: src/playgroundv2.java
 // another comment
+// another comment
