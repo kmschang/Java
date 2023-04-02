@@ -26,6 +26,8 @@ I made methods to set pay grade, get pay grade, reset the person, write output, 
 
 Then I made test cases to make sure all the printing was working, and it was passing all the variables correctly.
 
+This is a test about hooks.
+
  */
 
 public class SchangKyleProj2 {
