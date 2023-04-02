@@ -30,3 +30,4 @@ class B extends A {
 
 
 // comment
+// comment
