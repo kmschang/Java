@@ -28,4 +28,4 @@ class B extends A {
     }
 }
 
-// testing
+// test
