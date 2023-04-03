@@ -27,3 +27,5 @@ class B extends A {
         this.i = 3 * i;
     }
 }
+
+//testing
