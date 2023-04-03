@@ -29,3 +29,4 @@ class B extends A {
 }
 
 // Output:
+// i from A is 7
