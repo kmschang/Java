@@ -31,6 +31,7 @@ public class Exercise11_17 {
             if (appearance != 0){
                 index = index + appearance;
             }
+
         }
 
         int n = oddPrimeFactors.get(0);
