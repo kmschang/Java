@@ -27,6 +27,3 @@ class B extends A {
         this.i = 3 * i;
     }
 }
-
-// Output:
-// i from A is 7
