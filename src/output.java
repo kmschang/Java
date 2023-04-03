@@ -1,7 +1,9 @@
-public class Main {
+class Main {
 
 	public static void main(String[] args) {
 
-		System.out.println("Testing outputs);
+		System.out.println("Testing outputs");
+
+		}
 
 	}
