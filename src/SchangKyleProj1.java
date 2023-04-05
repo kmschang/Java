@@ -17,7 +17,6 @@ import java.util.*;
 
 // main class
 public class SchangKyleProj1 {
-
   // All the variables I will need including row, column, zeros, board, and
   // more.
 
