@@ -1,5 +1,6 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
+fail_fast: false
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.2.0
@@ -10,3 +11,20 @@ repos:
     -   id: check-added-large-files
     -   id: mixed-line-ending
     -   id: check-case-conflict
+
+-   repo: https://github.com/codespell-project/codespell
+    rev: v1.16.0
+    hooks:
+    -   id: codespell
+        name: codespell
+        description: Checks for common misspellings in text files.
+        entry: codespell --skip '*.git' -w *.py *.md *.txt *.java
+        language: python
+        types: [text]
+
+
+-   repo: https://github.com/pocc/pre-commit-hooks
+    rev: master
+    hooks:
+    -   id: clang-format
+        args: [-i]
