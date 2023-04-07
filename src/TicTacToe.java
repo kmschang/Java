@@ -1,7 +1,6 @@
 import static java.lang.Character.toLowerCase;
 import static java.lang.Character.toUpperCase;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -17,7 +16,6 @@ public class TicTacToe {
   public static int x;
 
   public static void main(String[] args) {
-
     loading();
     starting_board();
     set_chars();
@@ -186,15 +184,9 @@ public class TicTacToe {
       display_board();
     }
     // player gets even moves, computer starts
-    else {
-      if (move == 1) {
-        computer_first_move();
-        display_board();
-      } else if (player_num % 2 != move % 2) {
-        board[2][1] = computer_char;
-        ++move;
-        display_board();
-      }
+    else if (player_num % 2 != move % 2) {
+      computer_random_move();
+      display_board();
     }
 
     if (check_for_win(player_char)) {
@@ -206,7 +198,7 @@ public class TicTacToe {
     }
   }
 
-  public static void computer_first_move() {
+  public static void computer_random_move() {
     int row;
     int col;
     int first_index = (int)Math.floor(Math.random() * (9 - 1 + 1) + 1);
@@ -240,8 +232,12 @@ public class TicTacToe {
       col = 2;
     }
 
-    board[row][col] = computer_char;
-    ++move;
+    if (check_row_col(row, col)) {
+      board[row][col] = computer_char;
+      ++move;
+    } else {
+      computer_random_move();
+    }
   }
 
   public static boolean check_location(int location) {
@@ -390,7 +386,15 @@ public class TicTacToe {
     return false;
   }
 
-  public static void computer_block() {}
+  public static boolean computer_block() { return false; }
+
+  public static boolean computer_win() { return false; }
+
+  public static void x_won() {}
+
+  public static void o_won() {}
+
+  public static void tie() {}
 }
 
 class notCharException extends Exception {
