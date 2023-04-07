@@ -13,8 +13,6 @@ public class TicTacToe {
   static Scanner scnr = new Scanner(System.in);
   public static int move = 1;
 
-  public static int x;
-
   public static void main(String[] args) {
     loading();
     starting_board();
