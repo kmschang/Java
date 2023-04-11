@@ -264,11 +264,8 @@ public class TicTacToe {
 
   public static void move() {
 
-    if (move == ((dim * dim) + 1)) {
-    }
-
     // player gets odd moves, player starts
-    else if (player_num % 2 == move % 2) {
+    if (player_num % 2 == move % 2) {
       choose_location();
       display_board();
     }
