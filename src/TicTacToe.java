@@ -13,7 +13,9 @@ public class TicTacToe {
   static Scanner scnr = new Scanner(System.in);
   public static int move = 1;
 
-  public static void main(String[] args) {
+  public static void main(String[] args) { game(); }
+
+  public static void game() {
     loading();
     set_chars();
     move();
@@ -177,23 +179,73 @@ public class TicTacToe {
     }
   }
 
+  public static void display_winning_board(Character winning_car) {
+
+    clear(100);
+    title();
+    System.out.print("\u001B[34m");
+    System.out.println("              Created by Kyle Schang");
+    System.out.print("\u001B[37m");
+    System.out.println();
+    System.out.println();
+
+    System.out.println("\u001B[37m         Player is \u001B[33m" + player_char +
+                       "\u001B[37m         Computer is \u001B[36m" +
+                       computer_char + "\u001B[37m");
+
+    System.out.println();
+
+    for (int row = 0; row < 3; ++row) {
+      for (int col = 0; col < 3; ++col) {
+        if (col == 0) {
+          System.out.print("                    ");
+        }
+        if (board[row][col] == toUpperCase(winning_car)) {
+          System.out.print("\u001B[32m" + board[row][col] + "\u001B[37m");
+        } else {
+          System.out.print("\u001B[37m" + board[row][col] + "\u001B[37m");
+        }
+        if (col != 2) {
+          System.out.print(" | ");
+        }
+        if (row != 2 & col == 2) {
+          System.out.println("\n                   -----------");
+        }
+        if (row == 2 & col == 2) {
+          System.out.println();
+        }
+      }
+    }
+  }
+
   public static void move() {
 
+    if (move == 10) {
+    }
+
     // player gets odd moves, player starts
-    if (player_num % 2 == move % 2) {
+    else if (player_num % 2 == move % 2) {
       choose_location();
       display_board();
     }
     // player gets even moves, computer starts
     else if (player_num % 2 != move % 2) {
-      computer_random_move();
+      if (move == 1) {
+        computer_random_move();
+      } else if (computer_win() == false) {
+        if (computer_block() == false) {
+          computer_random_move();
+        }
+      }
       display_board();
     }
 
     if (check_for_win(player_char)) {
-      System.out.println("Player won");
+      player_won();
     } else if (check_for_win(computer_char)) {
-      System.out.println("Computer won");
+      computer_won();
+    } else if (move == 10) {
+      tie();
     } else {
       move();
     }
@@ -346,25 +398,256 @@ public class TicTacToe {
     return false;
   }
 
-  public static boolean computer_block() { return false; }
+  public static boolean computer_block() {
 
-  public static boolean computer_win() { return false; }
+    int line = 0;
 
-  public static void x_won() {}
+    // Checking horizontal
+    for (int row = 0; row < 3; ++row) {
+      int count = 0;
+      for (int col = 0; col < 3; ++col) {
+        if (board[row][col] == player_char) {
+          ++count;
+          line = row;
+        }
+      }
+      if (count == 2) {
+        for (int com_col = 0; com_col < 3; ++com_col) {
+          if (board[row][com_col] == ' ') {
+            board[row][com_col] = computer_char;
+            ++move;
+            return true;
+          }
+        }
+      }
+    }
 
-  public static void o_won() {}
+    // Checking Vertical
+    for (int row = 0; row < 3; ++row) {
+      int count = 0;
+      for (int col = 0; col < 3; ++col) {
+        if (board[col][row] == player_char) {
+          ++count;
+        }
+      }
+      if (count == 2) {
+        for (int com_col = 0; com_col < 3; ++com_col) {
+          if (board[com_col][row] == ' ') {
+            board[com_col][row] = computer_char;
+            ++move;
+            return true;
+          }
+        }
+      }
+    }
 
-  public static void tie() {}
-}
+    // Checking upper left diagonal
+    int count = 0;
+    for (int row = 0; row < 3; ++row) {
+      if (board[row][row] == player_char) {
+        ++count;
+      }
+      if (count == 2) {
+        for (int com_row = 0; com_row < 3; ++com_row) {
+          if (board[com_row][com_row] == ' ') {
+            board[com_row][com_row] = computer_char;
+            ++move;
+            return true;
+          }
+        }
+      }
+    }
 
-class notCharException extends Exception {
+    // Checking upper right diagonal
+    count = 0;
+    for (int row = 0; row < 3; ++row) {
+      if (board[row][2 - row] == player_char) {
+        ++count;
+      }
+      if (count == 2) {
+        for (int com_row = 0; com_row < 3; ++com_row) {
+          if (board[com_row][2 - com_row] == ' ') {
+            board[com_row][2 - com_row] = computer_char;
+            ++move;
+            return true;
+          }
+        }
+      }
+    }
 
-  Character choice;
-  notCharException(Character choice) { this.choice = choice; }
+    return false;
+  }
 
-  void print() {
+  public static boolean computer_win() {
+
+    int line = 0;
+
+    // Checking horizontal
+    for (int row = 0; row < 3; ++row) {
+      int count = 0;
+      for (int col = 0; col < 3; ++col) {
+        if (board[row][col] == computer_char) {
+          ++count;
+          line = row;
+        }
+      }
+      if (count == 2) {
+        for (int com_col = 0; com_col < 3; ++com_col) {
+          if (board[row][com_col] == ' ') {
+            board[row][com_col] = computer_char;
+            ++move;
+            return true;
+          }
+        }
+      }
+    }
+
+    // Checking Vertical
+    for (int row = 0; row < 3; ++row) {
+      int count = 0;
+      for (int col = 0; col < 3; ++col) {
+        if (board[col][row] == computer_char) {
+          ++count;
+        }
+      }
+      if (count == 2) {
+        for (int com_col = 0; com_col < 3; ++com_col) {
+          if (board[com_col][row] == ' ') {
+            board[com_col][row] = computer_char;
+            ++move;
+            return true;
+          }
+        }
+      }
+    }
+
+    // Checking upper left diagonal
+    int count = 0;
+    for (int row = 0; row < 3; ++row) {
+      if (board[row][row] == computer_char) {
+        ++count;
+      }
+      if (count == 2) {
+        for (int com_row = 0; com_row < 3; ++com_row) {
+          if (board[com_row][com_row] == ' ') {
+            board[com_row][com_row] = computer_char;
+            ++move;
+            return true;
+          }
+        }
+      }
+    }
+
+    // Checking upper right diagonal
+    count = 0;
+    for (int row = 0; row < 3; ++row) {
+      if (board[row][2 - row] == computer_char) {
+        ++count;
+      }
+      if (count == 2) {
+        for (int com_row = 0; com_row < 3; ++com_row) {
+          if (board[com_row][2 - com_row] == ' ') {
+            board[com_row][2 - com_row] = computer_char;
+            ++move;
+            return true;
+          }
+        }
+      }
+    }
+
+    return false;
+  }
+
+  public static void player_won() {
+
+    if (player_char == 'X') {
+      display_winning_board('X');
+    } else {
+      display_winning_board('O');
+    }
+    System.out.println("\u001B[33m");
+    System.out.println("              _               _       _       ");
+    System.out.println("        \\_/  | |  |  |    \\  / \\  /  | |  |\\ |");
+    System.out.println("         |   |_|  |__|     \\/   \\/   |_|  | \\|");
+    System.out.print("\u001B[37m");
+    play_again();
+  }
+
+  public static void computer_won() {
+    if (computer_char == 'X') {
+      display_winning_board('X');
+    } else {
+      display_winning_board('O');
+    }
+    System.out.println("\u001B[36m");
+    System.out.println("              _                  _    __   ___ ");
+    System.out.println("        \\_/  | |  |  |    |     | |   |_    |  ");
+    System.out.println("         |   |_|  |__|    |__   |_|   __|   |  ");
+    System.out.print("\u001B[37m");
+    play_again();
+  }
+
+  public static void tie() {
+    display_board();
+    System.out.println("\u001B[35m");
+    System.out.println("                  _____    ___");
+    System.out.println("                    |   |  |__");
+    System.out.println("                    |   |  |__");
+    System.out.print("\u001B[37m");
+    play_again();
+  }
+
+  public static void thanks_for_playing() {
+    System.out.println();
+    System.out.println();
     System.out.println(
-        choice +
-        " is not a choice. Please pick only \u001B[31m'X'\u001B[37m or \u001B[31m'O'\u001B[37m.");
+        "_____        _            ___   ___  __   _     _        _                ____         ");
+    System.out.println(
+        "  |   |__|  /_\\  |\\ | |/  |__   |__ |  | |_|   |_| |    /_\\   \\_/  | |\\ | | __       ");
+    System.out.println(
+        "  |   |  | /   \\ | \\| |\\  __|   |   |__| | \\   |   |__ /   \\   |   | | \\| |__|         ");
+  }
+
+  public static void play_again() {
+    System.out.println();
+    System.out.println();
+    try {
+      System.out.println("Do you want to play again (y or n)?");
+      char choice = scnr.next().charAt(0);
+      if (choice == 'N' || choice == 'n' || choice == 'Y' || choice == 'y') {
+        if (toUpperCase(choice) == 'Y') {
+          board =
+              new char[][] {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+          move = 1;
+          game();
+        } else {
+          thanks_for_playing();
+        }
+      } else {
+        throw new notCharException(choice);
+      }
+    } catch (notCharException e) {
+      e.print_2();
+      play_again();
+    }
+  }
+
+  static class notCharException extends Exception {
+
+    Character choice;
+
+    notCharException(Character choice) { this.choice = choice; }
+
+    void print() {
+      System.out.println(
+          choice +
+          " is not a choice. Please pick only \u001B[31m'X'\u001B[37m or \u001B[31m'O'\u001B[37m.");
+    }
+
+    void print_2() {
+      System.out.println(
+          choice +
+          " is not a choice. Please pick only \u001B[31m'Y'\u001B[37m or \u001B[31m'N'\u001B[37m.");
+    }
   }
 }
