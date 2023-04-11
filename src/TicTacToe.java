@@ -79,7 +79,7 @@ public class TicTacToe {
   public static void starting_board() {
     title();
     String line = "-----";
-    System.out.println("");
+    System.out.println();
     int spot = 1;
     for (int row = 0; row < dim; ++row) {
       for (int col = 0; col < dim; ++col) {
@@ -328,22 +328,35 @@ public class TicTacToe {
 
   public static void choose_location() {
 
-    System.out.println("\n\u001B[34m    Where would like to place the next " +
-                       player_char + "? (1-" + (dim * dim) + ")\u001B[37m");
-    int location = scnr.nextInt();
-
+    int location;
     int row;
     int col;
-    --location;
+    System.out.println("\n\u001B[34m    Where would like to place the next " +
+                       player_char + "? (1-" + (dim * dim) + ")\u001B[37m");
 
-    row = location / dim;
-    col = location % dim;
+    try {
+      location = Integer.parseInt(scnr.next());
+      if (location < 1 || location > Math.pow(dim, 2)) {
+        System.out.println("\u001B[31m             Only input numbers 1 to " +
+                           (int)Math.pow(dim, 2));
+        choose_location();
+      } else {
+        --location;
+        row = location / dim;
+        col = location % dim;
 
-    if (check_location(row, col)) {
-      board[row][col] = player_char;
-      ++move;
-    } else {
-      System.out.println("There is already a move there. Play somewhere else.");
+        if (check_location(row, col)) {
+          board[row][col] = player_char;
+          ++move;
+        } else {
+          System.out.println(
+              "There is already a move there. Play somewhere else.");
+          choose_location();
+        }
+      }
+    } catch (NumberFormatException ex) {
+      System.out.println("\u001B[31m             Only input numbers 1 to " +
+                         (int)Math.pow(dim, 2));
       choose_location();
     }
   }
