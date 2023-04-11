@@ -139,7 +139,6 @@ public class TicTacToe {
 
   public static Character pick_char() {
     System.out.println();
-    System.out.println();
     try {
       System.out.println(
           "\u001B[34m          Do you want to be \u001B[31m'X'\u001B[34m or \u001B[31m'O'\u001B[37m");
@@ -677,33 +676,13 @@ public class TicTacToe {
     notCharException(Character choice) { this.choice = choice; }
 
     void print() {
-      System.out.println(
-          choice +
-          " is not a choice. Please pick only \u001B[31m'X'\u001B[37m or \u001B[31m'O'\u001B[37m.");
+      System.out.println("\u001B[31m   " + choice +
+                         " is not a choice. Please pick only 'X' or 'O'");
     }
 
     void print_2() {
-      System.out.println(
-          choice +
-          " is not a choice. Please pick only \u001B[31m'Y'\u001B[37m or \u001B[31m'N'\u001B[37m.");
-    }
-  }
-
-  static class notIntExceptions extends Exception {
-
-    int dim;
-
-    notIntExceptions(int dim) { this.dim = dim; }
-
-    void print() {
-      System.out.println(dim +
-                         " is not a choice. Please only pick numbers 1 to " +
-                         (dim * dim));
-    }
-
-    void print_2() {
-      System.out.println(
-          "\u001B[31m          Please only pick numbers 3 to 10\u001B[37m");
+      System.out.println("\u001B[31m   " + choice +
+                         " is not a choice. Please pick only 'Y' or 'N'");
     }
   }
 }
