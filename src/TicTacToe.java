@@ -1,4 +1,3 @@
-import static java.lang.Character.toLowerCase;
 import static java.lang.Character.toUpperCase;
 
 import java.util.Scanner;
@@ -232,8 +231,8 @@ public class TicTacToe {
     else if (player_num % 2 != move % 2) {
       if (move == 1) {
         computer_random_move();
-      } else if (computer_win() == false) {
-        if (computer_block() == false) {
+      } else if (!computer_win()) {
+        if (!computer_block()) {
           computer_random_move();
         }
       }
@@ -400,15 +399,12 @@ public class TicTacToe {
 
   public static boolean computer_block() {
 
-    int line = 0;
-
     // Checking horizontal
     for (int row = 0; row < 3; ++row) {
       int count = 0;
       for (int col = 0; col < 3; ++col) {
         if (board[row][col] == player_char) {
           ++count;
-          line = row;
         }
       }
       if (count == 2) {
@@ -480,15 +476,12 @@ public class TicTacToe {
 
   public static boolean computer_win() {
 
-    int line = 0;
-
     // Checking horizontal
     for (int row = 0; row < 3; ++row) {
       int count = 0;
       for (int col = 0; col < 3; ++col) {
         if (board[row][col] == computer_char) {
           ++count;
-          line = row;
         }
       }
       if (count == 2) {
