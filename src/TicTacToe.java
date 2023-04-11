@@ -17,8 +17,8 @@ public class TicTacToe {
   public static void main(String[] args) { game(); }
 
   public static void game() {
+    clear_board();
     loading();
-    title();
     get_dimensions();
     set_chars();
     move();
@@ -63,6 +63,8 @@ public class TicTacToe {
     System.out.println();
 
     clear(100);
+
+    title();
   }
 
   public static void title() {
@@ -202,8 +204,10 @@ public class TicTacToe {
         }
         if (board[row][col] == toUpperCase(player_char)) {
           System.out.print("\u001B[33m" + board[row][col] + "\u001B[37m");
-        } else {
+        } else if (board[row][col] == toUpperCase(computer_char)) {
           System.out.print("\u001B[36m" + board[row][col] + "\u001B[37m");
+        } else {
+          System.out.print("\u001B[37m ");
         }
         if (col != (dim - 1)) {
           System.out.print(" | ");
@@ -660,6 +664,7 @@ public class TicTacToe {
 
     if (answer.equalsIgnoreCase("y")) {
       clear_board();
+      move = 1;
       game();
     } else if (answer.equalsIgnoreCase("n")) {
       thanks_for_playing();
@@ -670,8 +675,9 @@ public class TicTacToe {
   }
 
   public static void clear_board() {
-    for (int row = 0; row < 3; ++row) {
-      for (int col = 0; col < 3; ++col) {
+    for (int row = 0; row < dim; ++row) {
+      for (int col = 0; col < dim; ++col) {
+        board[row][col] = ' ';
       }
     }
   }
