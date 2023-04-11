@@ -1,6 +1,6 @@
 import static java.lang.Character.toUpperCase;
 
-import java.util.InputMismatchException;
+import java.util.*;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -350,7 +350,7 @@ public class TicTacToe {
           ++move;
         } else {
           System.out.println(
-              "There is already a move there. Play somewhere else.");
+              "\u001B[31m There is already a move there. Play somewhere else.");
           choose_location();
         }
       }
@@ -623,9 +623,9 @@ public class TicTacToe {
       display_winning_board('O');
     }
     System.out.println("\u001B[36m");
-    System.out.println("              _                  _    __   ___ ");
-    System.out.println("        \\_/  | |  |  |    |     | |   |_    |  ");
-    System.out.println("         |   |_|  |__|    |__   |_|   __|   |  ");
+    System.out.println("             _                  _    __   ___ ");
+    System.out.println("       \\_/  | |  |  |    |     | |   |_    |  ");
+    System.out.println("        |   |_|  |__|    |__   |_|   __|   |  ");
     System.out.print("\u001B[37m");
     play_again();
   }
@@ -653,24 +653,18 @@ public class TicTacToe {
 
   public static void play_again() {
     System.out.println();
-    System.out.println();
-    try {
-      System.out.println(
-          "\u001B[34m       Do you want to play again (y or n)?\u001B[37m");
-      char choice = scnr.next().charAt(0);
-      if (choice == 'N' || choice == 'n' || choice == 'Y' || choice == 'y') {
-        if (toUpperCase(choice) == 'Y') {
-          board = new char[dim][dim];
-          move = 1;
-          game();
-        } else {
-          thanks_for_playing();
-        }
-      } else {
-        throw new notCharException(choice);
-      }
-    } catch (notCharException e) {
-      e.print_2();
+    System.out.println(
+        "\u001B[34m        Do you want to play again (y or n)?\u001B[37m");
+
+    String answer = scnr.next();
+
+    if (answer.equalsIgnoreCase("y")) {
+      clear_board();
+      game();
+    } else if (answer.equalsIgnoreCase("n")) {
+      thanks_for_playing();
+    } else {
+      System.out.println("\u001B[31m                Only input y or n");
       play_again();
     }
   }
