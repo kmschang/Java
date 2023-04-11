@@ -17,7 +17,6 @@ public class TicTacToe {
   public static void main(String[] args) { game(); }
 
   public static void game() {
-    clear_board();
     loading();
     get_dimensions();
     set_chars();
@@ -676,9 +675,7 @@ public class TicTacToe {
 
   public static void clear_board() {
     for (int row = 0; row < dim; ++row) {
-      for (int col = 0; col < dim; ++col) {
-        board[row][col] = ' ';
-      }
+      Arrays.fill(board[row], ' ');
     }
   }
 
