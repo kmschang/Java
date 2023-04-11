@@ -23,6 +23,7 @@ public class test_Exercise11_13 {
     list.add(4);
     list.add(5);
     list.add(2);
+    list.add(2);
     Exercise11_13.removeDuplicate(list);
     assertEquals(8, list.size());
   }
