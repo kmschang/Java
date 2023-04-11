@@ -397,51 +397,6 @@ public class TicTacToe {
   }
 
   public static boolean computer_block(int num) {
-    // Checking horizontal
-    for (int row = 0; row < dim; ++row) {
-      int count = 0;
-      int count2 = 0;
-      for (int col = 0; col < dim; ++col) {
-        if (board[row][col] == player_char) {
-          ++count;
-        }
-        if (board[row][col] == computer_char) {
-          ++count2;
-        }
-      }
-      if (count == (dim - num) & count2 == 0) {
-        for (int com_col = 0; com_col < dim; ++com_col) {
-          if (board[row][com_col] != 'X' & board[row][com_col] != 'O') {
-            board[row][com_col] = computer_char;
-            ++move;
-            return true;
-          }
-        }
-      }
-    }
-
-    // Checking Vertical
-    for (int row = 0; row < dim; ++row) {
-      int count = 0;
-      int count2 = 0;
-      for (int col = 0; col < dim; ++col) {
-        if (board[col][row] == player_char) {
-          ++count;
-        }
-        if (board[col][row] == computer_char) {
-          ++count2;
-        }
-      }
-      if (count == (dim - num) & count2 == 0) {
-        for (int com_col = 0; com_col < dim; ++com_col) {
-          if (board[com_col][row] != 'X' & board[com_col][row] != 'O') {
-            board[com_col][row] = computer_char;
-            ++move;
-            return true;
-          }
-        }
-      }
-    }
 
     // Checking upper left diagonal
     int count = 0;
@@ -479,6 +434,52 @@ public class TicTacToe {
           if (board[com_row][(dim - 1) - com_row] != 'X' &
               board[com_row][(dim - 1) - com_row] != 'O') {
             board[com_row][(dim - 1) - com_row] = computer_char;
+            ++move;
+            return true;
+          }
+        }
+      }
+    }
+
+    // Checking horizontal
+    for (int row = 0; row < dim; ++row) {
+      count = 0;
+      count2 = 0;
+      for (int col = 0; col < dim; ++col) {
+        if (board[row][col] == player_char) {
+          ++count;
+        }
+        if (board[row][col] == computer_char) {
+          ++count2;
+        }
+      }
+      if (count == (dim - num) & count2 == 0) {
+        for (int com_col = 0; com_col < dim; ++com_col) {
+          if (board[row][com_col] != 'X' & board[row][com_col] != 'O') {
+            board[row][com_col] = computer_char;
+            ++move;
+            return true;
+          }
+        }
+      }
+    }
+
+    // Checking Vertical
+    for (int row = 0; row < dim; ++row) {
+      count = 0;
+      count2 = 0;
+      for (int col = 0; col < dim; ++col) {
+        if (board[col][row] == player_char) {
+          ++count;
+        }
+        if (board[col][row] == computer_char) {
+          ++count2;
+        }
+      }
+      if (count == (dim - num) & count2 == 0) {
+        for (int com_col = 0; com_col < dim; ++com_col) {
+          if (board[com_col][row] != 'X' & board[com_col][row] != 'O') {
+            board[com_col][row] = computer_char;
             ++move;
             return true;
           }
