@@ -229,6 +229,8 @@ public class TicTacToe {
 
     System.out.println();
 
+    String line = "----";
+
     for (int row = 0; row < dim; ++row) {
       for (int col = 0; col < dim; ++col) {
         if (col == 0) {
@@ -243,7 +245,7 @@ public class TicTacToe {
           System.out.print(" | ");
         }
         if (row != (dim - 1) & col == (dim - 1)) {
-          System.out.println("\n                   -----------");
+          System.out.println("\n                   " + line.repeat(dim));
         }
         if (row == (dim - 1) & col == (dim - 1)) {
           System.out.println();
@@ -254,7 +256,7 @@ public class TicTacToe {
 
   public static void move() {
 
-    if (move == 10) {
+    if (move == ((dim * dim) + 1)) {
     }
 
     // player gets odd moves, player starts
@@ -278,7 +280,7 @@ public class TicTacToe {
       player_won();
     } else if (check_for_win(computer_char)) {
       computer_won();
-    } else if (move == 10) {
+    } else if (move == ((dim * dim) + 1)) {
       tie();
     } else {
       move();
@@ -288,36 +290,13 @@ public class TicTacToe {
   public static void computer_random_move() {
     int row;
     int col;
-    int first_index = (int)Math.floor(Math.random() * (9 - 1 + 1) + 1);
+    int first_index =
+        (int)Math.floor(Math.random() * ((dim * dim) - 1 + 1) + 1);
 
-    if (first_index == 1) {
-      row = 0;
-      col = 0;
-    } else if (first_index == 2) {
-      row = 0;
-      col = 1;
-    } else if (first_index == 3) {
-      row = 0;
-      col = 2;
-    } else if (first_index == 4) {
-      row = 1;
-      col = 0;
-    } else if (first_index == 5) {
-      row = 1;
-      col = 1;
-    } else if (first_index == 6) {
-      row = 1;
-      col = 2;
-    } else if (first_index == 7) {
-      row = 2;
-      col = 0;
-    } else if (first_index == 8) {
-      row = 2;
-      col = 1;
-    } else {
-      row = 2;
-      col = 2;
-    }
+    --first_index;
+
+    row = first_index / dim;
+    col = first_index % dim;
 
     if (check_location(row, col)) {
       board[row][col] = computer_char;
@@ -335,40 +314,15 @@ public class TicTacToe {
   public static void choose_location() {
 
     System.out.println("\n\u001B[34m    Where would like to place the next " +
-                       player_char + "? (1-9)\u001B[37m");
+                       player_char + "? (1-" + (dim * dim) + ")\u001B[37m");
     int location = scnr.nextInt();
 
     int row;
     int col;
+    --location;
 
-    if (location == 1) {
-      row = 0;
-      col = 0;
-    } else if (location == 2) {
-      row = 0;
-      col = 1;
-    } else if (location == 3) {
-      row = 0;
-      col = 2;
-    } else if (location == 4) {
-      row = 1;
-      col = 0;
-    } else if (location == 5) {
-      row = 1;
-      col = 1;
-    } else if (location == 6) {
-      row = 1;
-      col = 2;
-    } else if (location == 7) {
-      row = 2;
-      col = 0;
-    } else if (location == 8) {
-      row = 2;
-      col = 1;
-    } else {
-      row = 2;
-      col = 2;
-    }
+    row = location / dim;
+    col = location % dim;
 
     if (check_location(row, col)) {
       board[row][col] = player_char;
@@ -382,49 +336,49 @@ public class TicTacToe {
   public static boolean check_for_win(char letter) {
 
     // Checking horizontal
-    for (int row = 0; row < 3; ++row) {
+    for (int row = 0; row < dim; ++row) {
       int count = 0;
-      for (int col = 0; col < 3; ++col) {
+      for (int col = 0; col < dim; ++col) {
         if (board[row][col] == letter) {
           ++count;
         }
       }
-      if (count == 3) {
+      if (count == dim) {
         return true;
       }
     }
 
     // Checking Vertical
-    for (int row = 0; row < 3; ++row) {
+    for (int row = 0; row < dim; ++row) {
       int count = 0;
-      for (int col = 0; col < 3; ++col) {
+      for (int col = 0; col < dim; ++col) {
         if (board[col][row] == letter) {
           ++count;
         }
       }
-      if (count == 3) {
+      if (count == dim) {
         return true;
       }
     }
 
     // Checking upper left diagonal
     int count = 0;
-    for (int row = 0; row < 3; ++row) {
+    for (int row = 0; row < dim; ++row) {
       if (board[row][row] == letter) {
         ++count;
       }
-      if (count == 3) {
+      if (count == dim) {
         return true;
       }
     }
 
     // Checking upper right diagonal
     count = 0;
-    for (int row = 0; row < 3; ++row) {
-      if (board[row][2 - row] == letter) {
+    for (int row = 0; row < dim; ++row) {
+      if (board[row][(dim - 1) - row] == letter) {
         ++count;
       }
-      if (count == 3) {
+      if (count == dim) {
         return true;
       }
     }
