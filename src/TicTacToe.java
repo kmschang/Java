@@ -296,7 +296,7 @@ public class TicTacToe {
     } else if (check_for_win(computer_char)) {
       computer_won();
     } else if (move == ((dim * dim) + 1)) {
-      tie();
+      tie(2);
     } else {
       move();
     }
@@ -630,14 +630,27 @@ public class TicTacToe {
     play_again();
   }
 
-  public static void tie() {
-    display_board();
-    System.out.println("\u001B[35m");
-    System.out.println("                  _____    ___");
-    System.out.println("                    |   |  |__");
-    System.out.println("                    |   |  |__");
-    System.out.print("\u001B[37m");
-    play_again();
+  public static void tie(int num) {
+    if (num == 1) {
+      display_board();
+      System.out.println("\u001B[35m");
+      System.out.println("                  _____    ___");
+      System.out.println("                    |   |  |__");
+      System.out.println("                    |   |  |__");
+      System.out.print("\u001B[37m");
+      play_again();
+    } else if (num == 2) {
+      display_board();
+      System.out.println("\u001B[35m");
+      System.out.println(
+          "____    _  _____ , ____    ____     _    __    __  ____      ");
+      System.out.println(
+          "|      /_\\   |     |___    | ___   /_\\   | \\  / |  |___     ");
+      System.out.println(
+          "|___  /   \\  |     ___|    |___|  /   \\  |  \\/  |  |___     ");
+      System.out.print("\u001B[37m");
+      play_again();
+    }
   }
 
   public static void thanks_for_playing() {

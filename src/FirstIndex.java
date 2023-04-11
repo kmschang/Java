@@ -9,3 +9,16 @@ public class FirstIndex {
     }
   }
 }
+
+class testing_print {
+  public static void main(String[] args) {
+    System.out.println("\u001B[35m");
+    System.out.println(
+        "         ____    _  _____ , ____    ____     _    __    __  ____      ");
+    System.out.println(
+        "         |      /_\\   |     |___    | ___   /_\\   | \\  / |  |___     ");
+    System.out.println(
+        "         |___  /   \\  |     ___|    |___|  /   \\  |  \\/  |  |___     ");
+    System.out.print("\u001B[37m");
+  }
+}
