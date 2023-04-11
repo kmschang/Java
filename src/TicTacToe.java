@@ -272,7 +272,13 @@ public class TicTacToe {
         if (!computer_block(1)) {
           if (!computer_block(2)) {
             if (!computer_win(2)) {
-              computer_random_move();
+              if (dim >= 3) {
+                if (!computer_win(3)) {
+                  computer_random_move();
+                }
+              } else {
+                computer_random_move();
+              }
             }
           }
         }
@@ -487,12 +493,16 @@ public class TicTacToe {
     // Checking horizontal
     for (int row = 0; row < dim; ++row) {
       int count = 0;
+      int count2 = 0;
       for (int col = 0; col < dim; ++col) {
         if (board[row][col] == computer_char) {
           ++count;
         }
+        if (board[row][col] == player_char) {
+          ++count2;
+        }
       }
-      if (count == (dim - num)) {
+      if (count == (dim - num) & count2 == 0) {
         for (int com_col = 0; com_col < dim; ++com_col) {
           if (board[row][com_col] != 'X' & board[row][com_col] != 'O') {
             board[row][com_col] = computer_char;
@@ -506,12 +516,16 @@ public class TicTacToe {
     // Checking Vertical
     for (int row = 0; row < dim; ++row) {
       int count = 0;
+      int count2 = 0;
       for (int col = 0; col < dim; ++col) {
         if (board[col][row] == computer_char) {
           ++count;
         }
+        if (board[col][row] == player_char) {
+          ++count2;
+        }
       }
-      if (count == (dim - num)) {
+      if (count == (dim - num) & count2 == 0) {
         for (int com_col = 0; com_col < dim; ++com_col) {
           if (board[com_col][row] != 'X' & board[com_col][row] != 'O') {
             board[com_col][row] = computer_char;
@@ -524,11 +538,15 @@ public class TicTacToe {
 
     // Checking upper left diagonal
     int count = 0;
+    int count2 = 0;
     for (int row = 0; row < dim; ++row) {
       if (board[row][row] == computer_char) {
         ++count;
       }
-      if (count == (dim - num)) {
+      if (board[row][row] == player_char) {
+        ++count2;
+      }
+      if (count == (dim - num) & count2 == 0) {
         for (int com_row = 0; com_row < dim; ++com_row) {
           if (board[com_row][com_row] != 'X' & board[com_row][com_row] != 'O') {
             board[com_row][com_row] = computer_char;
@@ -541,9 +559,13 @@ public class TicTacToe {
 
     // Checking upper right diagonal
     count = 0;
+    count2 = 0;
     for (int row = 0; row < dim; ++row) {
       if (board[row][(dim - 1) - row] == computer_char) {
         ++count;
+      }
+      if (board[row][(dim - 1 - row)] == player_char) {
+        ++count2;
       }
       if (count == (dim - num)) {
         for (int com_row = 0; com_row < dim; ++com_row) {
