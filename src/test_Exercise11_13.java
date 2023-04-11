@@ -24,6 +24,6 @@ public class test_Exercise11_13 {
     list.add(5);
     list.add(2);
     Exercise11_13.removeDuplicate(list);
-    assertEquals(7, list.size());
+    assertEquals(8, list.size());
   }
 }
