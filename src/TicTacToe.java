@@ -67,7 +67,7 @@ public class TicTacToe {
   }
 
   public static void title() {
-    System.out.print("\u001B[35m");
+    System.out.print("\u001B[32m");
     System.out.println(
         "_____    ____   _____   _    ____   _____  ____  ___         ");
     System.out.println(
@@ -90,21 +90,21 @@ public class TicTacToe {
         if (col != (dim - 1)) {
           if (spot <= 9) {
             System.out.print(" "
-                             + "\u001B[32m0" + spot + "\u001B[37m"
+                             + "\u001B[33m0" + spot + "\u001B[37m"
                              + " |");
           } else {
             System.out.print(" "
-                             + "\u001B[32m" + spot + "\u001B[37m"
+                             + "\u001B[33m" + spot + "\u001B[37m"
                              + " |");
           }
         }
         if (col == (dim - 1)) {
           if (spot <= 9) {
             System.out.print(" "
-                             + "\u001B[32m0" + spot + "\u001B[37m");
+                             + "\u001B[33m0" + spot + "\u001B[37m");
           } else {
             System.out.print(" "
-                             + "\u001B[32m" + spot + "\u001B[37m");
+                             + "\u001B[33m" + spot + "\u001B[37m");
           }
         }
         if (row != (dim - 1) & col == (dim - 1)) {
@@ -173,8 +173,6 @@ public class TicTacToe {
     } else {
       computer_char = 'X';
     }
-
-    System.out.println("You are now \u001B[33m" + player_char + "\u001B[37m");
 
     board = new char[dim][dim];
 
@@ -655,7 +653,7 @@ public class TicTacToe {
 
   public static void thanks_for_playing() {
     System.out.println();
-    System.out.println("\u001B[31m");
+    System.out.println("\u001B[35m");
     System.out.println(
         "_____        _            ___   ___  __   _     _        _                ____         ");
     System.out.println(
