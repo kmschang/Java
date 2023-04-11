@@ -79,7 +79,7 @@ public class TicTacToe {
   public static void starting_board() {
     title();
     String line = "-----";
-    System.out.println("\n");
+    System.out.println("");
     int spot = 1;
     for (int row = 0; row < dim; ++row) {
       for (int col = 0; col < dim; ++col) {
@@ -89,21 +89,21 @@ public class TicTacToe {
         if (col != (dim - 1)) {
           if (spot <= 9) {
             System.out.print(" "
-                             + "\u001B[31m0" + spot + "\u001B[37m"
+                             + "\u001B[32m0" + spot + "\u001B[37m"
                              + " |");
           } else {
             System.out.print(" "
-                             + "\u001B[31m" + spot + "\u001B[37m"
+                             + "\u001B[32m" + spot + "\u001B[37m"
                              + " |");
           }
         }
         if (col == (dim - 1)) {
           if (spot <= 9) {
             System.out.print(" "
-                             + "\u001B[31m0" + spot + "\u001B[37m");
+                             + "\u001B[32m0" + spot + "\u001B[37m");
           } else {
             System.out.print(" "
-                             + "\u001B[31m" + spot + "\u001B[37m");
+                             + "\u001B[32m" + spot + "\u001B[37m");
           }
         }
         if (row != (dim - 1) & col == (dim - 1)) {
