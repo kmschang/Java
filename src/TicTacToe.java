@@ -1,5 +1,6 @@
 import static java.lang.Character.toUpperCase;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -118,15 +119,20 @@ public class TicTacToe {
   public static void get_dimensions() {
 
     System.out.println();
+
+    System.out.println(
+        "\u001B[34m  What are the dimensions of the Tic Tac Toe board?\u001B[37m");
+
     try {
-      System.out.println(
-          "\u001B[34m       What are the dimensions of the board?\u001B[37m");
-      dim = scnr.nextInt();
-      if (dim <= 2 || dim > 10) {
-        throw new notIntExceptions(dim);
+      dim = Integer.parseInt(scnr.next());
+      if (dim < 3 || dim > 10) {
+        System.out.println(
+            "\u001B[31m            Only input integers 3 to 10\u001B[37m");
+        get_dimensions();
       }
-    } catch (notIntExceptions e) {
-      e.print_2();
+    } catch (NumberFormatException ex) {
+      System.out.println(
+          "\u001B[31m            Only input integers 3 to 10\u001B[37m");
       get_dimensions();
     }
   }
@@ -156,6 +162,7 @@ public class TicTacToe {
 
   public static void set_chars() {
 
+    clear(100);
     starting_board();
 
     char player = toUpperCase(pick_char());
