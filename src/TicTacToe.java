@@ -387,7 +387,6 @@ public class TicTacToe {
   }
 
   public static boolean computer_block() {
-
     // Checking horizontal
     for (int row = 0; row < dim; ++row) {
       int count = 0;
@@ -417,7 +416,7 @@ public class TicTacToe {
       }
       if (count == (dim - 1)) {
         for (int com_col = 0; com_col < dim; ++com_col) {
-          if (board[row][com_col] != 'X' & board[row][com_col] != 'O') {
+          if (board[com_col][row] == 'X' & board[com_col][row] == 'O') {
             board[com_col][row] = computer_char;
             ++move;
             return true;
@@ -460,23 +459,22 @@ public class TicTacToe {
         }
       }
     }
-
     return false;
   }
 
   public static boolean computer_win() {
 
     // Checking horizontal
-    for (int row = 0; row < 3; ++row) {
+    for (int row = 0; row < dim; ++row) {
       int count = 0;
-      for (int col = 0; col < 3; ++col) {
+      for (int col = 0; col < dim; ++col) {
         if (board[row][col] == computer_char) {
           ++count;
         }
       }
-      if (count == 2) {
-        for (int com_col = 0; com_col < 3; ++com_col) {
-          if (board[row][com_col] == ' ') {
+      if (count == (dim - 1)) {
+        for (int com_col = 0; com_col < dim; ++com_col) {
+          if (board[row][com_col] == 'X' & board[row][com_col] == 'O') {
             board[row][com_col] = computer_char;
             ++move;
             return true;
@@ -486,16 +484,16 @@ public class TicTacToe {
     }
 
     // Checking Vertical
-    for (int row = 0; row < 3; ++row) {
+    for (int row = 0; row < dim; ++row) {
       int count = 0;
-      for (int col = 0; col < 3; ++col) {
+      for (int col = 0; col < dim; ++col) {
         if (board[col][row] == computer_char) {
           ++count;
         }
       }
-      if (count == 2) {
-        for (int com_col = 0; com_col < 3; ++com_col) {
-          if (board[com_col][row] == ' ') {
+      if (count == (dim - 1)) {
+        for (int com_col = 0; com_col < dim; ++com_col) {
+          if (board[com_col][row] == 'X' & board[com_col][row] == 'O') {
             board[com_col][row] = computer_char;
             ++move;
             return true;
@@ -506,13 +504,13 @@ public class TicTacToe {
 
     // Checking upper left diagonal
     int count = 0;
-    for (int row = 0; row < 3; ++row) {
+    for (int row = 0; row < dim; ++row) {
       if (board[row][row] == computer_char) {
         ++count;
       }
-      if (count == 2) {
-        for (int com_row = 0; com_row < 3; ++com_row) {
-          if (board[com_row][com_row] == ' ') {
+      if (count == (dim - 1)) {
+        for (int com_row = 0; com_row < dim; ++com_row) {
+          if (board[com_row][com_row] == 'X' & board[com_row][com_row] == 'O') {
             board[com_row][com_row] = computer_char;
             ++move;
             return true;
@@ -523,14 +521,15 @@ public class TicTacToe {
 
     // Checking upper right diagonal
     count = 0;
-    for (int row = 0; row < 3; ++row) {
-      if (board[row][2 - row] == computer_char) {
+    for (int row = 0; row < dim; ++row) {
+      if (board[row][(dim - 1) - row] == computer_char) {
         ++count;
       }
-      if (count == 2) {
-        for (int com_row = 0; com_row < 3; ++com_row) {
-          if (board[com_row][2 - com_row] == ' ') {
-            board[com_row][2 - com_row] = computer_char;
+      if (count == (dim - 1)) {
+        for (int com_row = 0; com_row < dim; ++com_row) {
+          if (board[com_row][(dim - 1) - com_row] == 'X' &
+              board[com_row][(dim - 1) - com_row] == 'O') {
+            board[com_row][(dim - 1) - com_row] = computer_char;
             ++move;
             return true;
           }
@@ -600,8 +599,7 @@ public class TicTacToe {
       char choice = scnr.next().charAt(0);
       if (choice == 'N' || choice == 'n' || choice == 'Y' || choice == 'y') {
         if (toUpperCase(choice) == 'Y') {
-          board =
-              new char[][] {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+          board = new char[dim][dim];
           move = 1;
           game();
         } else {
