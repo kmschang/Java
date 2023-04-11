@@ -271,7 +271,9 @@ public class TicTacToe {
       } else if (!computer_win(1)) {
         if (!computer_block(1)) {
           if (!computer_block(2)) {
-            computer_random_move();
+            if (!computer_win(2)) {
+              computer_random_move();
+            }
           }
         }
       }
@@ -492,7 +494,7 @@ public class TicTacToe {
       }
       if (count == (dim - num)) {
         for (int com_col = 0; com_col < dim; ++com_col) {
-          if (board[row][com_col] == 'X' & board[row][com_col] == 'O') {
+          if (board[row][com_col] != 'X' & board[row][com_col] != 'O') {
             board[row][com_col] = computer_char;
             ++move;
             return true;
@@ -511,7 +513,7 @@ public class TicTacToe {
       }
       if (count == (dim - num)) {
         for (int com_col = 0; com_col < dim; ++com_col) {
-          if (board[com_col][row] == 'X' & board[com_col][row] == 'O') {
+          if (board[com_col][row] != 'X' & board[com_col][row] != 'O') {
             board[com_col][row] = computer_char;
             ++move;
             return true;
@@ -528,7 +530,7 @@ public class TicTacToe {
       }
       if (count == (dim - num)) {
         for (int com_row = 0; com_row < dim; ++com_row) {
-          if (board[com_row][com_row] == 'X' & board[com_row][com_row] == 'O') {
+          if (board[com_row][com_row] != 'X' & board[com_row][com_row] != 'O') {
             board[com_row][com_row] = computer_char;
             ++move;
             return true;
@@ -545,8 +547,8 @@ public class TicTacToe {
       }
       if (count == (dim - num)) {
         for (int com_row = 0; com_row < dim; ++com_row) {
-          if (board[com_row][(dim - 1) - com_row] == 'X' &
-              board[com_row][(dim - 1) - com_row] == 'O') {
+          if (board[com_row][(dim - 1) - com_row] != 'X' &
+              board[com_row][(dim - 1) - com_row] != 'O') {
             board[com_row][(dim - 1) - com_row] = computer_char;
             ++move;
             return true;
