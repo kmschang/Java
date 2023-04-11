@@ -686,10 +686,5 @@ public class TicTacToe {
       System.out.println("\u001B[31m   " + choice +
                          " is not a choice. Please pick only 'X' or 'O'");
     }
-
-    void print_2() {
-      System.out.println("\u001B[31m   " + choice +
-                         " is not a choice. Please pick only 'Y' or 'N'");
-    }
   }
 }
