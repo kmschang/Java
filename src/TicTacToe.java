@@ -85,7 +85,7 @@ public class TicTacToe {
     for (int row = 0; row < dim; ++row) {
       for (int col = 0; col < dim; ++col) {
         if (col == 0) {
-          System.out.print("                   ");
+          System.out.print("                  ");
         }
         if (col != (dim - 1)) {
           if (spot <= 9) {
@@ -108,7 +108,7 @@ public class TicTacToe {
           }
         }
         if (row != (dim - 1) & col == (dim - 1)) {
-          System.out.println("\n                   " + line.repeat(dim));
+          System.out.println("\n                  " + line.repeat(dim));
         }
         if (row == (dim - 1) & col == (dim - 1))
           System.out.println();
