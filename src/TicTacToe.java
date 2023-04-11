@@ -1,6 +1,5 @@
 import static java.lang.Character.toUpperCase;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -268,12 +267,12 @@ public class TicTacToe {
     else if (player_num % 2 != move % 2) {
       if (move == 1) {
         computer_random_move();
-      } else if (!computer_win(1)) {
-        if (!computer_block(1)) {
-          if (!computer_block(2)) {
-            if (!computer_win(2)) {
+      } else if (computer_win(1)) {
+        if (computer_block(1)) {
+          if (computer_block(2)) {
+            if (computer_win(2)) {
               if (dim >= 3) {
-                if (!computer_win(3)) {
+                if (computer_win(3)) {
                   computer_random_move();
                 }
               } else {
@@ -413,7 +412,7 @@ public class TicTacToe {
           if (board[com_row][com_row] != 'X' & board[com_row][com_row] != 'O') {
             board[com_row][com_row] = computer_char;
             ++move;
-            return true;
+            return false;
           }
         }
       }
@@ -435,7 +434,7 @@ public class TicTacToe {
               board[com_row][(dim - 1) - com_row] != 'O') {
             board[com_row][(dim - 1) - com_row] = computer_char;
             ++move;
-            return true;
+            return false;
           }
         }
       }
@@ -458,7 +457,7 @@ public class TicTacToe {
           if (board[row][com_col] != 'X' & board[row][com_col] != 'O') {
             board[row][com_col] = computer_char;
             ++move;
-            return true;
+            return false;
           }
         }
       }
@@ -481,12 +480,12 @@ public class TicTacToe {
           if (board[com_col][row] != 'X' & board[com_col][row] != 'O') {
             board[com_col][row] = computer_char;
             ++move;
-            return true;
+            return false;
           }
         }
       }
     }
-    return false;
+    return true;
   }
 
   public static boolean computer_win(int num) {
@@ -508,7 +507,7 @@ public class TicTacToe {
           if (board[row][com_col] != 'X' & board[row][com_col] != 'O') {
             board[row][com_col] = computer_char;
             ++move;
-            return true;
+            return false;
           }
         }
       }
@@ -531,7 +530,7 @@ public class TicTacToe {
           if (board[com_col][row] != 'X' & board[com_col][row] != 'O') {
             board[com_col][row] = computer_char;
             ++move;
-            return true;
+            return false;
           }
         }
       }
@@ -552,7 +551,7 @@ public class TicTacToe {
           if (board[com_row][com_row] != 'X' & board[com_row][com_row] != 'O') {
             board[com_row][com_row] = computer_char;
             ++move;
-            return true;
+            return false;
           }
         }
       }
@@ -574,13 +573,13 @@ public class TicTacToe {
               board[com_row][(dim - 1) - com_row] != 'O') {
             board[com_row][(dim - 1) - com_row] = computer_char;
             ++move;
-            return true;
+            return false;
           }
         }
       }
     }
 
-    return false;
+    return true;
   }
 
   public static void player_won() {
@@ -654,6 +653,13 @@ public class TicTacToe {
     } catch (notCharException e) {
       e.print_2();
       play_again();
+    }
+  }
+
+  public static void clear_board() {
+    for (int row = 0; row < 3; ++row) {
+      for (int col = 0; col < 3; ++col) {
+      }
     }
   }
 
