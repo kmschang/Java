@@ -106,7 +106,7 @@ public class TicTacToe {
     System.out.println();
     try {
       System.out.println(
-          "Do you want to be \u001B[31m'X'\u001B[37m or \u001B[31m'O'\u001B[37m");
+          "\u001B[34m          Do you want to be \u001B[31m'X'\u001B[34m or \u001B[31m'O'\u001B[37m");
       char choice = scnr.next().charAt(0);
       if (choice == 'X' || choice == 'x' || choice == 'O' || choice == 'o') {
         if (toUpperCase(choice) == 'X') {
@@ -300,8 +300,8 @@ public class TicTacToe {
 
   public static void choose_location() {
 
-    System.out.println("\n    Where would like to place the next " +
-                       player_char + "? (1-9)");
+    System.out.println("\n\u001B[34m    Where would like to place the next " +
+                       player_char + "? (1-9)\u001B[37m");
     int location = scnr.nextInt();
 
     int row;
@@ -599,7 +599,7 @@ public class TicTacToe {
 
   public static void thanks_for_playing() {
     System.out.println();
-    System.out.println();
+    System.out.println("\u001B[31m");
     System.out.println(
         "_____        _            ___   ___  __   _     _        _                ____         ");
     System.out.println(
@@ -612,7 +612,8 @@ public class TicTacToe {
     System.out.println();
     System.out.println();
     try {
-      System.out.println("Do you want to play again (y or n)?");
+      System.out.println(
+          "\u001B[34m       Do you want to play again (y or n)?\u001B[37m");
       char choice = scnr.next().charAt(0);
       if (choice == 'N' || choice == 'n' || choice == 'Y' || choice == 'y') {
         if (toUpperCase(choice) == 'Y') {
