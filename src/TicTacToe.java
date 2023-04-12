@@ -3,7 +3,6 @@ import static java.lang.Character.toUpperCase;
 import java.util.*;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-import org.jetbrains.annotations.NotNull;
 
 public class TicTacToe {
 
@@ -82,6 +81,7 @@ public class TicTacToe {
     String line2 = "  ";
     String line3;
     String line4 = "";
+    String line5 = "-";
     if (dim < 5) {
       line3 = line2.repeat(10 - dim) + "  ";
     } else if (dim < 7) {
@@ -90,22 +90,7 @@ public class TicTacToe {
       line3 = line2.repeat(10 - dim);
     }
 
-    if (dim == 3)
-      line4 = "--";
-    if (dim == 4)
-      line4 = "---";
-    if (dim == 5)
-      line4 = "----";
-    if (dim == 6)
-      line4 = "-----";
-    if (dim == 7)
-      line4 = "------";
-    if (dim == 8)
-      line4 = "-------";
-    if (dim == 9)
-      line4 = "--------";
-    if (dim == 10)
-      line4 = "---------";
+    line4 = "--" + line5.repeat(dim - 3);
 
     System.out.println();
     int spot = 1;
@@ -212,6 +197,7 @@ public class TicTacToe {
     String line2 = "  ";
     String line3;
     String line4 = "";
+    String line5 = "-";
     if (dim < 5) {
       line3 = line2.repeat(10 - dim);
     } else if (dim < 7) {
@@ -220,22 +206,7 @@ public class TicTacToe {
       line3 = line2.repeat(10 - dim);
     }
 
-    if (dim == 3)
-      line4 = "--";
-    if (dim == 4)
-      line4 = "---";
-    if (dim == 5)
-      line4 = "----";
-    if (dim == 6)
-      line4 = "-----";
-    if (dim == 7)
-      line4 = "------";
-    if (dim == 8)
-      line4 = "-------";
-    if (dim == 9)
-      line4 = "--------";
-    if (dim == 10)
-      line4 = "---------";
+    line4 = "--" + line5.repeat(dim - 3);
 
     System.out.println();
 
@@ -288,6 +259,7 @@ public class TicTacToe {
     String line2 = "  ";
     String line3;
     String line4 = "";
+    String line5 = "-";
     if (dim < 5) {
       line3 = line2.repeat(10 - dim);
     } else if (dim < 7) {
@@ -296,22 +268,7 @@ public class TicTacToe {
       line3 = line2.repeat(10 - dim);
     }
 
-    if (dim == 3)
-      line4 = "--";
-    if (dim == 4)
-      line4 = "---";
-    if (dim == 5)
-      line4 = "----";
-    if (dim == 6)
-      line4 = "-----";
-    if (dim == 7)
-      line4 = "------";
-    if (dim == 8)
-      line4 = "-------";
-    if (dim == 9)
-      line4 = "--------";
-    if (dim == 10)
-      line4 = "---------";
+    line4 = "--" + line5.repeat(dim - 3);
 
     winning_check(winning_char);
 
@@ -342,7 +299,7 @@ public class TicTacToe {
     }
   }
 
-  public static @NotNull Boolean winning_check(Character winning_char) {
+  public static void winning_check(Character winning_char) {
 
     winning_board = new char[dim][dim];
 
@@ -360,7 +317,7 @@ public class TicTacToe {
         }
       }
       if (count == dim) {
-        return true;
+        return;
       } else {
         for (int row2 = 0; row2 < dim; ++row2) {
           Arrays.fill(winning_board[row2], ' ');
@@ -378,7 +335,7 @@ public class TicTacToe {
         }
       }
       if (count == dim) {
-        return true;
+        return;
       } else {
         for (int row2 = 0; row2 < dim; ++row2) {
           Arrays.fill(winning_board[row2], ' ');
@@ -394,7 +351,7 @@ public class TicTacToe {
         winning_board[row][row] = 'Y';
       }
       if (count == dim) {
-        return true;
+        return;
       } else {
         for (int row2 = 0; row2 < dim; ++row2) {
           Arrays.fill(winning_board[row2], ' ');
@@ -410,14 +367,13 @@ public class TicTacToe {
         winning_board[row][(dim - 1) - row] = 'Y';
       }
       if (count == dim) {
-        return true;
+        return;
       } else {
         for (int row2 = 0; row2 < dim; ++row2) {
           Arrays.fill(winning_board[row2], ' ');
         }
       }
     }
-    return false;
   }
 
   public static void move() {
