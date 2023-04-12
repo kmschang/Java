@@ -277,7 +277,8 @@ public class TicTacToe {
     }
   }
 
-  public static void display_winning_board(Character winning_car) {
+  public static void display_winning_board(Character winning_car,
+                                           Character losing_car) {
 
     clear(100);
     title();
@@ -330,8 +331,10 @@ public class TicTacToe {
         }
         if (board[row][col] == toUpperCase(winning_car)) {
           System.out.print("\u001B[32m" + board[row][col] + "\u001B[37m");
-        } else {
+        } else if (board[row][col] == toUpperCase(losing_car)) {
           System.out.print("\u001B[37m" + board[row][col] + "\u001B[37m");
+        } else {
+          System.out.print(" ");
         }
         if (col != (dim - 1)) {
           System.out.print(" | ");
@@ -692,9 +695,9 @@ public class TicTacToe {
   public static void player_won() {
 
     if (player_char == 'X') {
-      display_winning_board('X');
+      display_winning_board('X', 'O');
     } else {
-      display_winning_board('O');
+      display_winning_board('O', 'X');
     }
     System.out.println("\u001B[33m");
     System.out.println(
@@ -709,9 +712,9 @@ public class TicTacToe {
 
   public static void computer_won() {
     if (computer_char == 'X') {
-      display_winning_board('X');
+      display_winning_board('X', 'O');
     } else {
-      display_winning_board('O');
+      display_winning_board('O', 'X');
     }
     System.out.println("\u001B[36m");
     System.out.println(
