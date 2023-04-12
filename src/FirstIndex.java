@@ -6,6 +6,8 @@ public class FirstIndex {
     for (int num = 0; num < Math.pow(dim, 2); ++num) {
       row = num / dim;
       col = num % dim;
+      System.out.println(row);
+      System.out.println(col);
     }
   }
 }
