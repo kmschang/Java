@@ -14,6 +14,7 @@ public class TicTacToe {
   public static Character computer_char;
   static Scanner scnr = new Scanner(System.in);
   public static int move = 1;
+  public static int color_num = 7;
 
   public static void main(String[] args) { game(); }
 
@@ -272,13 +273,19 @@ public class TicTacToe {
 
     winning_check(winning_char);
 
+    if (winning_char == player_char) {
+      color_num = 3;
+    } else {
+      color_num = 6;
+    }
+
     for (int row = 0; row < dim; ++row) {
       for (int col = 0; col < dim; ++col) {
         if (col == 0) {
           System.out.print("                  " + line3);
         }
         if (board[row][col] == toUpperCase(winning_char) & winning_board[row][col] == 'Y') {
-          System.out.print("\u001B[32m" + board[row][col] + "\u001B[37m");
+          System.out.print("\u001B[3" + color_num + "m" + board[row][col] + "\u001B[37m");
         } else if (board[row][col] == toUpperCase(winning_char) & winning_board[row][col] != 'Y') {
           System.out.print("\u001B[37m" + board[row][col] + "\u001B[37m");
         } else if (board[row][col] == toUpperCase(losing_char)) {
@@ -716,7 +723,7 @@ public class TicTacToe {
     } else {
       display_winning_board('O', 'X');
     }
-    System.out.println("\u001B[33m");
+    System.out.println("\u001B[35m");
     System.out.println("                         _               _       _");
     System.out.println("                   \\_/  | |  |  |    \\  / \\  /  | |  |\\ |");
     System.out.println("                    |   |_|  |__|     \\/   \\/   |_|  | \\|");
@@ -730,7 +737,7 @@ public class TicTacToe {
     } else {
       display_winning_board('O', 'X');
     }
-    System.out.println("\u001B[36m");
+    System.out.println("\u001B[35m");
     System.out.println("                        _                  _    __   ___");
     System.out.println("                  \\_/  | |  |  |    |     | |   |_    |");
     System.out.println("                   |   |_|  |__|    |__   |_|   __|   |");

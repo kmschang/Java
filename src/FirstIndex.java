@@ -36,12 +36,9 @@ class testing_print {
 
 class testing_1 {
   public static void main(String[] args) {
-    int dim = 7;
-    String line4;
-    String line5 = "-";
 
-    line4 = "--" + line5.repeat(dim - 3);
-
-    System.out.println(line4);
+    int num = 3;
+    System.out.println("\u001B[3" + num + "m"
+                       + "test");
   }
 }
