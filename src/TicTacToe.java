@@ -68,12 +68,9 @@ public class TicTacToe {
 
   public static void title() {
     System.out.print("\u001B[32m");
-    System.out.println(
-        "           _____    ____   _____   _    ____   _____  ____  ___         ");
-    System.out.println(
-        "             |   |  |        |    /_\\   |        |    |  |  |__       ");
-    System.out.println(
-        "             |   |  |___     |   /   \\  |___     |    |__|  |__         ");
+    System.out.println("           _____    ____   _____   _    ____   _____  ____  ___");
+    System.out.println("             |   |  |        |    /_\\   |        |    |  |  |__");
+    System.out.println("             |   |  |___     |   /   \\  |___     |    |__|  |__");
     System.out.println("\u001B[37m");
   }
 
@@ -136,8 +133,7 @@ public class TicTacToe {
           }
         }
         if (row != (dim - 1) & col == (dim - 1)) {
-          System.out.println("\n            " + line3 + line.repeat(dim) +
-                             line4);
+          System.out.println("\n            " + line3 + line.repeat(dim) + line4);
         }
         if (row == (dim - 1) & col == (dim - 1))
           System.out.println();
@@ -150,19 +146,16 @@ public class TicTacToe {
 
     System.out.println();
 
-    System.out.println(
-        "\u001B[34m             What are the dimensions of the Tic Tac Toe board?\u001B[37m");
+    System.out.println("\u001B[34m             What are the dimensions of the Tic Tac Toe board?\u001B[37m");
 
     try {
       dim = Integer.parseInt(scnr.next());
       if (dim < 3 || dim > 10) {
-        System.out.println(
-            "\u001B[31m                       Only input integers 3 to 10\u001B[37m");
+        System.out.println("\u001B[31m                       Only input integers 3 to 10\u001B[37m");
         get_dimensions();
       }
     } catch (NumberFormatException ex) {
-      System.out.println(
-          "\u001B[31m                       Only input integers 3 to 10\u001B[37m");
+      System.out.println("\u001B[31m                       Only input integers 3 to 10\u001B[37m");
       get_dimensions();
     }
   }
@@ -244,10 +237,8 @@ public class TicTacToe {
 
     System.out.println();
 
-    System.out.println("\u001B[37m                    Player is \u001B[33m" +
-                       player_char +
-                       "\u001B[37m         Computer is \u001B[36m" +
-                       computer_char + "\u001B[37m");
+    System.out.println("\u001B[37m                    Player is \u001B[33m" + player_char +
+                       "\u001B[37m         Computer is \u001B[36m" + computer_char + "\u001B[37m");
 
     System.out.println();
 
@@ -267,8 +258,7 @@ public class TicTacToe {
           System.out.print(" | ");
         }
         if (row != (dim - 1) & col == (dim - 1)) {
-          System.out.println("\n                 " + line3 + line.repeat(dim) +
-                             line4);
+          System.out.println("\n                 " + line3 + line.repeat(dim) + line4);
         }
         if (row == (dim - 1) & col == (dim - 1)) {
           System.out.println();
@@ -277,8 +267,7 @@ public class TicTacToe {
     }
   }
 
-  public static void display_winning_board(Character winning_car,
-                                           Character losing_car) {
+  public static void display_winning_board(Character winning_car, Character losing_car) {
 
     clear(100);
     title();
@@ -288,10 +277,8 @@ public class TicTacToe {
     System.out.println();
     System.out.println();
 
-    System.out.println("\u001B[37m                    Player is \u001B[33m" +
-                       player_char +
-                       "\u001B[37m         Computer is \u001B[36m" +
-                       computer_char + "\u001B[37m");
+    System.out.println("\u001B[37m                    Player is \u001B[33m" + player_char +
+                       "\u001B[37m         Computer is \u001B[36m" + computer_char + "\u001B[37m");
 
     System.out.println();
 
@@ -340,8 +327,7 @@ public class TicTacToe {
           System.out.print(" | ");
         }
         if (row != (dim - 1) & col == (dim - 1)) {
-          System.out.println("\n                 " + line3 + line.repeat(dim) +
-                             line4);
+          System.out.println("\n                 " + line3 + line.repeat(dim) + line4);
         }
         if (row == (dim - 1) & col == (dim - 1)) {
           System.out.println();
@@ -393,8 +379,7 @@ public class TicTacToe {
   public static void computer_random_move() {
     int row;
     int col;
-    int first_index =
-        (int)Math.floor(Math.random() * ((dim * dim) - 1 + 1) + 1);
+    int first_index = (int)Math.floor(Math.random() * ((dim * dim) - 1 + 1) + 1);
 
     --first_index;
 
@@ -409,26 +394,20 @@ public class TicTacToe {
     }
   }
 
-  public static boolean check_location(int row, int col) {
-
-    return board[row][col] != 'X' && board[row][col] != 'O';
-  }
+  public static boolean check_location(int row, int col) { return board[row][col] != 'X' && board[row][col] != 'O'; }
 
   public static void choose_location() {
 
     int location;
     int row;
     int col;
-    System.out.println(
-        "\n\u001B[34m               Where would like to place the next " +
-        player_char + "? (1-" + (dim * dim) + ")\u001B[37m");
+    System.out.println("\n\u001B[34m               Where would like to place the next " + player_char + "? (1-" +
+                       (dim * dim) + ")\u001B[37m");
 
     try {
       location = Integer.parseInt(scnr.next());
       if (location < 1 || location > Math.pow(dim, 2)) {
-        System.out.println(
-            "\u001B[31m                        Only input numbers 1 to " +
-            (int)Math.pow(dim, 2));
+        System.out.println("\u001B[31m                        Only input numbers 1 to " + (int)Math.pow(dim, 2));
         choose_location();
       } else {
         --location;
@@ -439,15 +418,12 @@ public class TicTacToe {
           board[row][col] = player_char;
           ++move;
         } else {
-          System.out.println(
-              "\u001B[31m            There is already a move there. Play somewhere else.");
+          System.out.println("\u001B[31m            There is already a move there. Play somewhere else.");
           choose_location();
         }
       }
     } catch (NumberFormatException ex) {
-      System.out.println(
-          "\u001B[31m                        Only input numbers 1 to " +
-          (int)Math.pow(dim, 2));
+      System.out.println("\u001B[31m                        Only input numbers 1 to " + (int)Math.pow(dim, 2));
       choose_location();
     }
   }
@@ -540,8 +516,7 @@ public class TicTacToe {
       }
       if (count == (dim - num) & count2 == 0) {
         for (int com_row = 0; com_row < dim; ++com_row) {
-          if (board[com_row][(dim - 1) - com_row] != 'X' &
-              board[com_row][(dim - 1) - com_row] != 'O') {
+          if (board[com_row][(dim - 1) - com_row] != 'X' & board[com_row][(dim - 1) - com_row] != 'O') {
             board[com_row][(dim - 1) - com_row] = computer_char;
             ++move;
             return false;
@@ -679,8 +654,7 @@ public class TicTacToe {
       }
       if (count == (dim - num)) {
         for (int com_row = 0; com_row < dim; ++com_row) {
-          if (board[com_row][(dim - 1) - com_row] != 'X' &
-              board[com_row][(dim - 1) - com_row] != 'O') {
+          if (board[com_row][(dim - 1) - com_row] != 'X' & board[com_row][(dim - 1) - com_row] != 'O') {
             board[com_row][(dim - 1) - com_row] = computer_char;
             ++move;
             return false;
@@ -700,12 +674,9 @@ public class TicTacToe {
       display_winning_board('O', 'X');
     }
     System.out.println("\u001B[33m");
-    System.out.println(
-        "                         _               _       _       ");
-    System.out.println(
-        "                   \\_/  | |  |  |    \\  / \\  /  | |  |\\ |");
-    System.out.println(
-        "                    |   |_|  |__|     \\/   \\/   |_|  | \\|");
+    System.out.println("                         _               _       _");
+    System.out.println("                   \\_/  | |  |  |    \\  / \\  /  | |  |\\ |");
+    System.out.println("                    |   |_|  |__|     \\/   \\/   |_|  | \\|");
     System.out.print("\u001B[37m");
     play_again();
   }
@@ -717,12 +688,9 @@ public class TicTacToe {
       display_winning_board('O', 'X');
     }
     System.out.println("\u001B[36m");
-    System.out.println(
-        "                        _                  _    __   ___ ");
-    System.out.println(
-        "                  \\_/  | |  |  |    |     | |   |_    |  ");
-    System.out.println(
-        "                   |   |_|  |__|    |__   |_|   __|   |  ");
+    System.out.println("                        _                  _    __   ___");
+    System.out.println("                  \\_/  | |  |  |    |     | |   |_    |");
+    System.out.println("                   |   |_|  |__|    |__   |_|   __|   |");
     System.out.print("\u001B[37m");
     play_again();
   }
@@ -739,12 +707,9 @@ public class TicTacToe {
     } else if (num == 2) {
       display_board();
       System.out.println("\u001B[35m");
-      System.out.println(
-          "           ____    _  _____ , ____    ____     _    __    __  ____      ");
-      System.out.println(
-          "           |      /_\\   |     |___    | ___   /_\\   | \\  / |  |___     ");
-      System.out.println(
-          "           |___  /   \\  |     ___|    |___|  /   \\  |  \\/  |  |___     ");
+      System.out.println("           ____    _  _____ , ____    ____     _    __    __  ____");
+      System.out.println("           |      /_\\   |     |___    | ___   /_\\   | \\  / |  |___");
+      System.out.println("           |___  /   \\  |     ___|    |___|  /   \\  |  \\/  |  |___");
       System.out.print("\u001B[37m");
       play_again();
     }
@@ -753,18 +718,14 @@ public class TicTacToe {
   public static void thanks_for_playing() {
     System.out.println();
     System.out.println("\u001B[35m");
-    System.out.println(
-        "_____        _            ___   ___  __   _     _        _                ____         ");
-    System.out.println(
-        "  |   |__|  /_\\  |\\ | |/  |__   |__ |  | |_|   |_| |    /_\\   \\_/  | |\\ | | __       ");
-    System.out.println(
-        "  |   |  | /   \\ | \\| |\\  __|   |   |__| | \\   |   |__ /   \\   |   | | \\| |__|         ");
+    System.out.println("_____        _            ___   ___  __   _     _        _                ____");
+    System.out.println("  |   |__|  /_\\  |\\ | |/  |__   |__ |  | |_|   |_| |    /_\\   \\_/  | |\\ | | __");
+    System.out.println("  |   |  | /   \\ | \\| |\\  __|   |   |__| | \\   |   |__ /   \\   |   | | \\| |__|");
   }
 
   public static void play_again() {
     System.out.println();
-    System.out.println(
-        "\u001B[34m                   Do you want to play again (y or n)?\u001B[37m");
+    System.out.println("\u001B[34m                   Do you want to play again (y or n)?\u001B[37m");
 
     String answer = scnr.next();
 
@@ -775,8 +736,7 @@ public class TicTacToe {
     } else if (answer.equalsIgnoreCase("n")) {
       thanks_for_playing();
     } else {
-      System.out.println(
-          "\u001B[31m                           Only input y or n");
+      System.out.println("\u001B[31m                           Only input y or n");
       play_again();
     }
   }
@@ -794,8 +754,7 @@ public class TicTacToe {
     notCharException(Character choice) { this.choice = choice; }
 
     void print() {
-      System.out.println("\u001B[31m              " + choice +
-                         " is not a choice. Please pick only 'X' or 'O'");
+      System.out.println("\u001B[31m              " + choice + " is not a choice. Please pick only 'X' or 'O'");
     }
   }
 }
