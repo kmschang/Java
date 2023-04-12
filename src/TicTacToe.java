@@ -134,7 +134,7 @@ public class TicTacToe {
 
     System.out.println();
 
-    System.out.println("\u001B[34m             What are the dimensions of the Tic Tac Toe board?\u001B[37m");
+    System.out.println("\u001B[34m         What are the dimensions of the Tic Tac Toe board (3-10)?\u001B[37m");
 
     try {
       dim = Integer.parseInt(scnr.next());
