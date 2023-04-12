@@ -79,9 +79,10 @@ public class TicTacToe {
 
   public static void starting_board() {
     title();
-    String line = "-----";
+    String line = "----";
     String line2 = "  ";
     String line3;
+    String line4 = "";
     if (dim < 5) {
       line3 = line2.repeat(10 - dim) + "  ";
     } else if (dim < 7) {
@@ -89,6 +90,24 @@ public class TicTacToe {
     } else {
       line3 = line2.repeat(10 - dim);
     }
+
+    if (dim == 3)
+      line4 = "--";
+    if (dim == 4)
+      line4 = "---";
+    if (dim == 5)
+      line4 = "----";
+    if (dim == 6)
+      line4 = "-----";
+    if (dim == 7)
+      line4 = "------";
+    if (dim == 8)
+      line4 = "-------";
+    if (dim == 9)
+      line4 = "--------";
+    if (dim == 10)
+      line4 = "---------";
+
     System.out.println();
     int spot = 1;
     for (int row = 0; row < dim; ++row) {
@@ -117,7 +136,8 @@ public class TicTacToe {
           }
         }
         if (row != (dim - 1) & col == (dim - 1)) {
-          System.out.println("\n            " + line3 + line.repeat(dim));
+          System.out.println("\n            " + line3 + line.repeat(dim) +
+                             line4);
         }
         if (row == (dim - 1) & col == (dim - 1))
           System.out.println();
@@ -193,9 +213,10 @@ public class TicTacToe {
     clear(100);
     title();
 
-    String line = "----";
+    String line = "---";
     String line2 = "  ";
     String line3;
+    String line4 = "";
     if (dim < 5) {
       line3 = line2.repeat(10 - dim);
     } else if (dim < 7) {
@@ -203,6 +224,23 @@ public class TicTacToe {
     } else {
       line3 = line2.repeat(10 - dim);
     }
+
+    if (dim == 3)
+      line4 = "--";
+    if (dim == 4)
+      line4 = "---";
+    if (dim == 5)
+      line4 = "----";
+    if (dim == 6)
+      line4 = "-----";
+    if (dim == 7)
+      line4 = "------";
+    if (dim == 8)
+      line4 = "-------";
+    if (dim == 9)
+      line4 = "--------";
+    if (dim == 10)
+      line4 = "---------";
 
     System.out.println();
 
@@ -229,7 +267,8 @@ public class TicTacToe {
           System.out.print(" | ");
         }
         if (row != (dim - 1) & col == (dim - 1)) {
-          System.out.println("\n                 " + line3 + line.repeat(dim));
+          System.out.println("\n                 " + line3 + line.repeat(dim) +
+                             line4);
         }
         if (row == (dim - 1) & col == (dim - 1)) {
           System.out.println();
@@ -255,9 +294,10 @@ public class TicTacToe {
 
     System.out.println();
 
-    String line = "----";
+    String line = "---";
     String line2 = "  ";
     String line3;
+    String line4 = "";
     if (dim < 5) {
       line3 = line2.repeat(10 - dim);
     } else if (dim < 7) {
@@ -265,6 +305,23 @@ public class TicTacToe {
     } else {
       line3 = line2.repeat(10 - dim);
     }
+
+    if (dim == 3)
+      line4 = "--";
+    if (dim == 4)
+      line4 = "---";
+    if (dim == 5)
+      line4 = "----";
+    if (dim == 6)
+      line4 = "-----";
+    if (dim == 7)
+      line4 = "------";
+    if (dim == 8)
+      line4 = "-------";
+    if (dim == 9)
+      line4 = "--------";
+    if (dim == 10)
+      line4 = "---------";
 
     for (int row = 0; row < dim; ++row) {
       for (int col = 0; col < dim; ++col) {
@@ -280,7 +337,8 @@ public class TicTacToe {
           System.out.print(" | ");
         }
         if (row != (dim - 1) & col == (dim - 1)) {
-          System.out.println("\n                 " + line3 + line.repeat(dim));
+          System.out.println("\n                 " + line3 + line.repeat(dim) +
+                             line4);
         }
         if (row == (dim - 1) & col == (dim - 1)) {
           System.out.println();
