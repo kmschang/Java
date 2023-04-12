@@ -3,11 +3,13 @@ import static java.lang.Character.toUpperCase;
 import java.util.*;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import org.jetbrains.annotations.NotNull;
 
 public class TicTacToe {
 
   public static int dim;
   public static char[][] board = new char[dim][dim];
+  public static char[][] winning_board = new char[dim][dim];
   public static Character player_char;
   public static int player_num;
   public static Character computer_char;
@@ -267,7 +269,7 @@ public class TicTacToe {
     }
   }
 
-  public static void display_winning_board(Character winning_car, Character losing_car) {
+  public static void display_winning_board(Character winning_char, Character losing_char) {
 
     clear(100);
     title();
@@ -311,14 +313,18 @@ public class TicTacToe {
     if (dim == 10)
       line4 = "---------";
 
+    winning_check(winning_char);
+
     for (int row = 0; row < dim; ++row) {
       for (int col = 0; col < dim; ++col) {
         if (col == 0) {
           System.out.print("                  " + line3);
         }
-        if (board[row][col] == toUpperCase(winning_car)) {
+        if (board[row][col] == toUpperCase(winning_char) & winning_board[row][col] == 'Y') {
           System.out.print("\u001B[32m" + board[row][col] + "\u001B[37m");
-        } else if (board[row][col] == toUpperCase(losing_car)) {
+        } else if (board[row][col] == toUpperCase(winning_char) & winning_board[row][col] != 'Y') {
+          System.out.print("\u001B[37m" + board[row][col] + "\u001B[37m");
+        } else if (board[row][col] == toUpperCase(losing_char)) {
           System.out.print("\u001B[37m" + board[row][col] + "\u001B[37m");
         } else {
           System.out.print(" ");
@@ -334,6 +340,84 @@ public class TicTacToe {
         }
       }
     }
+  }
+
+  public static @NotNull Boolean winning_check(Character winning_char) {
+
+    winning_board = new char[dim][dim];
+
+    for (int row = 0; row < dim; ++row) {
+      Arrays.fill(winning_board[row], ' ');
+    }
+
+    // Checking horizontal
+    for (int row = 0; row < dim; ++row) {
+      int count = 0;
+      for (int col = 0; col < dim; ++col) {
+        if (board[row][col] == winning_char) {
+          ++count;
+          winning_board[row][col] = 'Y';
+        }
+      }
+      if (count == dim) {
+        return true;
+      } else {
+        for (int row2 = 0; row2 < dim; ++row2) {
+          Arrays.fill(winning_board[row2], ' ');
+        }
+      }
+    }
+
+    // Checking Vertical
+    for (int row = 0; row < dim; ++row) {
+      int count = 0;
+      for (int col = 0; col < dim; ++col) {
+        if (board[col][row] == winning_char) {
+          ++count;
+          winning_board[col][row] = 'Y';
+        }
+      }
+      if (count == dim) {
+        return true;
+      } else {
+        for (int row2 = 0; row2 < dim; ++row2) {
+          Arrays.fill(winning_board[row2], ' ');
+        }
+      }
+    }
+
+    // Checking upper left diagonal
+    int count = 0;
+    for (int row = 0; row < dim; ++row) {
+      if (board[row][row] == winning_char) {
+        ++count;
+        winning_board[row][row] = 'Y';
+      }
+      if (count == dim) {
+        return true;
+      } else {
+        for (int row2 = 0; row2 < dim; ++row2) {
+          Arrays.fill(winning_board[row2], ' ');
+        }
+      }
+    }
+
+    // Checking upper right diagonal
+    count = 0;
+    for (int row = 0; row < dim; ++row) {
+      if (board[row][(dim - 1) - row] == winning_char) {
+        ++count;
+        winning_board[row][(dim - 1) - row] = 'Y';
+      }
+      if (count == dim) {
+        return true;
+      } else {
+        for (int row2 = 0; row2 < dim; ++row2) {
+          Arrays.fill(winning_board[row2], ' ');
+        }
+      }
+    }
+    return false;
   }
 
   public static void move() {
