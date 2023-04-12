@@ -45,9 +45,7 @@ public class Exercise08_21 {
       }
     }
 
-    System.out.println("The central city is at (" + central_city[0][0] + ", " +
-                       central_city[1][0] + ")");
-    System.out.printf("The total distance to all other cities is %.2f",
-                      central_city_distance);
+    System.out.println("The central city is at (" + central_city[0][0] + ", " + central_city[1][0] + ")");
+    System.out.printf("The total distance to all other cities is %.2f", central_city_distance);
   }
 }

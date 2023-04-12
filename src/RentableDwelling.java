@@ -2,9 +2,7 @@ public abstract class RentableDwelling {
 
   private double rentPerUnit;
 
-  public RentableDwelling(double rentPerUnit) {
-    this.rentPerUnit = rentPerUnit;
-  }
+  public RentableDwelling(double rentPerUnit) { this.rentPerUnit = rentPerUnit; }
 
   public double getRentPerUnit() { return rentPerUnit; }
 
@@ -20,7 +18,5 @@ class ApartmentHouse extends RentableDwelling {
     this.numberOfApartments = numberOfApartments;
   }
 
-  public double getRentalIncome() {
-    return this.numberOfApartments * getRentPerUnit();
-  }
+  public double getRentalIncome() { return this.numberOfApartments * getRentPerUnit(); }
 }

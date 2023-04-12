@@ -8,8 +8,7 @@ import org.junit.jupiter.api.*;
 public class test_SchangKyleProj1 {
 
   private final PrintStream standardOut = System.out;
-  private final ByteArrayOutputStream outputStreamCaptor =
-      new ByteArrayOutputStream();
+  private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
   private Assertions Assert;
   int[][] test_answers = new int[3][3];
 
@@ -102,11 +101,9 @@ public class test_SchangKyleProj1 {
   @DisplayName("(8,8,9)")
   void eight_eight_nine() {
     SchangKyleProj1.board =
-        new int[][] {{1, 2, 3, 4, 5, 6, 7, 9, 8}, {4, 5, 6, 7, 8, 9, 1, 2, 3},
-                     {7, 8, 9, 1, 2, 3, 4, 5, 6}, {2, 1, 4, 3, 6, 5, 9, 8, 7},
-                     {3, 6, 5, 8, 9, 7, 2, 1, 4}, {8, 9, 7, 2, 1, 4, 3, 6, 5},
-                     {5, 3, 1, 9, 4, 8, 6, 7, 2}, {9, 4, 8, 6, 7, 2, 5, 3, 1},
-                     {6, 7, 2, 5, 3, 1, 8, 4, 0}};
+        new int[][] {{1, 2, 3, 4, 5, 6, 7, 9, 8}, {4, 5, 6, 7, 8, 9, 1, 2, 3}, {7, 8, 9, 1, 2, 3, 4, 5, 6},
+                     {2, 1, 4, 3, 6, 5, 9, 8, 7}, {3, 6, 5, 8, 9, 7, 2, 1, 4}, {8, 9, 7, 2, 1, 4, 3, 6, 5},
+                     {5, 3, 1, 9, 4, 8, 6, 7, 2}, {9, 4, 8, 6, 7, 2, 5, 3, 1}, {6, 7, 2, 5, 3, 1, 8, 4, 0}};
     test_answers = new int[][] {{8, 8, 9}, {0, 0, 0}, {0, 0, 0}};
     SchangKyleProj1.location = new int[][] {{8, 8}, {0, 0}, {0, 0}};
     SchangKyleProj1.zeros = 1;

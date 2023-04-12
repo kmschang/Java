@@ -66,21 +66,9 @@ public class Suduko_old {
         int x = check_for_zero(board)[0][0];
         int y = check_for_zero(board)[0][1];
         if (num_print == 0) {
-          answers.append("(")
-              .append(x)
-              .append(",")
-              .append(y)
-              .append(",")
-              .append(a)
-              .append(")");
+          answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
         } else {
-          answers.append("\n(")
-              .append(x)
-              .append(",")
-              .append(y)
-              .append(",")
-              .append(a)
-              .append(")");
+          answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
         }
         ++num_print;
       }
@@ -95,33 +83,15 @@ public class Suduko_old {
             int y = check_for_zero(board)[i][1];
 
             if (num_print == 0 & num_row == 0) {
-              answers.append("(")
-                  .append(x)
-                  .append(",")
-                  .append(y)
-                  .append(",")
-                  .append(a)
-                  .append(")");
+              answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
               ++num_print;
               ++num_row;
             } else if (num_print != 0 & num_row == 0) {
-              answers.append("\n(")
-                  .append(x)
-                  .append(",")
-                  .append(y)
-                  .append(",")
-                  .append(a)
-                  .append(")");
+              answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
               ++num_print;
               ++num_row;
             } else {
-              answers.append(" (")
-                  .append(x)
-                  .append(",")
-                  .append(y)
-                  .append(",")
-                  .append(a)
-                  .append(")");
+              answers.append(" (").append(x).append(",").append(y).append(",").append(a).append(")");
               ++num_print;
               ++num_row;
             }
@@ -136,33 +106,15 @@ public class Suduko_old {
             int y = check_for_zero(board)[i][1];
 
             if (num_print == 0 & num_row == 0) {
-              answers.append("(")
-                  .append(x)
-                  .append(",")
-                  .append(y)
-                  .append(",")
-                  .append(a)
-                  .append(")");
+              answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
               ++num_print;
               ++num_row;
             } else if (num_print != 0 & num_row == 0) {
-              answers.append("\n(")
-                  .append(x)
-                  .append(",")
-                  .append(y)
-                  .append(",")
-                  .append(a)
-                  .append(")");
+              answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
               ++num_print;
               ++num_row;
             } else {
-              answers.append(" (")
-                  .append(x)
-                  .append(",")
-                  .append(y)
-                  .append(",")
-                  .append(a)
-                  .append(")");
+              answers.append(" (").append(x).append(",").append(y).append(",").append(a).append(")");
               ++num_print;
               ++num_row;
             }
@@ -180,33 +132,15 @@ public class Suduko_old {
             int y = check_for_zero(board)[i][1];
 
             if (num_print == 0 & num_row == 0) {
-              answers.append("(")
-                  .append(x)
-                  .append(",")
-                  .append(y)
-                  .append(",")
-                  .append(a)
-                  .append(")");
+              answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
               ++num_print;
               ++num_row;
             } else if (num_print != 0 & num_row == 0) {
-              answers.append("\n(")
-                  .append(x)
-                  .append(",")
-                  .append(y)
-                  .append(",")
-                  .append(a)
-                  .append(")");
+              answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
               ++num_print;
               ++num_row;
             } else {
-              answers.append(" (")
-                  .append(x)
-                  .append(",")
-                  .append(y)
-                  .append(",")
-                  .append(a)
-                  .append(")");
+              answers.append(" (").append(x).append(",").append(y).append(",").append(a).append(")");
               ++num_print;
               ++num_row;
             }
@@ -221,33 +155,15 @@ public class Suduko_old {
             int y = check_for_zero(board)[i][1];
 
             if (num_print == 0 & num_row == 0) {
-              answers.append("(")
-                  .append(x)
-                  .append(",")
-                  .append(y)
-                  .append(",")
-                  .append(a)
-                  .append(")");
+              answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
               ++num_print;
               ++num_row;
             } else if (num_print != 0 & num_row == 0) {
-              answers.append("\n(")
-                  .append(x)
-                  .append(",")
-                  .append(y)
-                  .append(",")
-                  .append(a)
-                  .append(")");
+              answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
               ++num_print;
               ++num_row;
             } else {
-              answers.append(" (")
-                  .append(x)
-                  .append(",")
-                  .append(y)
-                  .append(",")
-                  .append(a)
-                  .append(")");
+              answers.append(" (").append(x).append(",").append(y).append(",").append(a).append(")");
               ++num_print;
               ++num_row;
             }
@@ -264,21 +180,9 @@ public class Suduko_old {
               horizontal(check_for_zero(board)[0][0], board);
 
           if (num_print == 0) {
-            answers.append("(")
-                .append(x)
-                .append(",")
-                .append(y)
-                .append(",")
-                .append(a)
-                .append(")");
+            answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
           } else {
-            answers.append("\n(")
-                .append(x)
-                .append(",")
-                .append(y)
-                .append(",")
-                .append(a)
-                .append(")");
+            answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
           }
           ++num_print;
 
@@ -287,13 +191,7 @@ public class Suduko_old {
             int xx = check_for_zero(board)[i][0];
             int yy = check_for_zero(board)[i][1];
 
-            answers.append(" (")
-                .append(xx)
-                .append(",")
-                .append(yy)
-                .append(",")
-                .append(aa)
-                .append(")");
+            answers.append(" (").append(xx).append(",").append(yy).append(",").append(aa).append(")");
             ++num_print;
           }
         }
@@ -307,21 +205,9 @@ public class Suduko_old {
               horizontal(check_for_zero(board)[2][0], board);
 
           if (num_print == 0) {
-            answers.append("(")
-                .append(x)
-                .append(",")
-                .append(y)
-                .append(",")
-                .append(a)
-                .append(")");
+            answers.append("(").append(x).append(",").append(y).append(",").append(a).append(")");
           } else {
-            answers.append("\n(")
-                .append(x)
-                .append(",")
-                .append(y)
-                .append(",")
-                .append(a)
-                .append(")");
+            answers.append("\n(").append(x).append(",").append(y).append(",").append(a).append(")");
           }
           ++num_print;
 
@@ -330,13 +216,7 @@ public class Suduko_old {
             int xx = check_for_zero(board)[i][0];
             int yy = check_for_zero(board)[i][1];
 
-            answers.append(" (")
-                .append(xx)
-                .append(",")
-                .append(yy)
-                .append(",")
-                .append(aa)
-                .append(")");
+            answers.append(" (").append(xx).append(",").append(yy).append(",").append(aa).append(")");
             ++num_print;
           }
         }
@@ -453,23 +333,18 @@ public class Suduko_old {
 
   // determine which way we need to solve with three missing
   public static int three_missing(int[][] zero_cord) {
-    if (zero_cord[0][0] != zero_cord[1][0] &
-        zero_cord[1][0] != zero_cord[2][0] &
-        zero_cord[0][0] != zero_cord[2][0]) {
+    if (zero_cord[0][0] != zero_cord[1][0] & zero_cord[1][0] != zero_cord[2][0] & zero_cord[0][0] != zero_cord[2][0]) {
       // all horizontal
       return 1;
-    } else if (zero_cord[0][1] != zero_cord[1][1] &
-               zero_cord[1][1] != zero_cord[2][1] &
+    } else if (zero_cord[0][1] != zero_cord[1][1] & zero_cord[1][1] != zero_cord[2][1] &
                zero_cord[0][1] != zero_cord[2][1]) {
       // all vertical
       return 2;
-    } else if (zero_cord[0][0] != zero_cord[1][0] &
-               zero_cord[1][0] == zero_cord[2][0]) {
+    } else if (zero_cord[0][0] != zero_cord[1][0] & zero_cord[1][0] == zero_cord[2][0]) {
       // solve the first one horizontally and set it in the board, so we can
       // solve the other two vertically
       return 3;
-    } else if (zero_cord[2][0] != zero_cord[1][0] &
-               zero_cord[1][0] == zero_cord[0][0]) {
+    } else if (zero_cord[2][0] != zero_cord[1][0] & zero_cord[1][0] == zero_cord[0][0]) {
       //  solve the last one horizontally and set it in the board, so we can
       //  solve the other two vertically
       return 4;

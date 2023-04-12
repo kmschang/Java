@@ -42,9 +42,7 @@ public class Exercise09_13 {
 
     locateLargest(numbers);
 
-    System.out.println("The largest element is " +
-                       numbers[Exercise09_13.row][Exercise09_13.column] +
-                       ", located at (" + Exercise09_13.row + ", " +
-                       Exercise09_13.column + ")");
+    System.out.println("The largest element is " + numbers[Exercise09_13.row][Exercise09_13.column] + ", located at (" +
+                       Exercise09_13.row + ", " + Exercise09_13.column + ")");
   }
 }

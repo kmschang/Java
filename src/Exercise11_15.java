@@ -21,19 +21,16 @@ public class Exercise11_15 {
 
     for (int j = 0; j < (numPoints - 2); ++j) {
 
-      double sideOne = Math.sqrt(Math.pow(points[j + 1][1] - points[0][1], 2) +
-                                 Math.pow(points[j + 1][0] - points[0][0], 2));
-      double sideTwo =
-          Math.sqrt(Math.pow(points[j + 2][1] - points[j + 1][1], 2) +
-                    Math.pow(points[j + 2][0] - points[j + 1][0], 2));
+      double sideOne =
+          Math.sqrt(Math.pow(points[j + 1][1] - points[0][1], 2) + Math.pow(points[j + 1][0] - points[0][0], 2));
+      double sideTwo = Math.sqrt(Math.pow(points[j + 2][1] - points[j + 1][1], 2) +
+                                 Math.pow(points[j + 2][0] - points[j + 1][0], 2));
       double sideThree =
-          Math.sqrt(Math.pow(points[j + 2][1] - points[0][1], 2) +
-                    Math.pow(points[j + 2][0] - points[0][0], 2));
+          Math.sqrt(Math.pow(points[j + 2][1] - points[0][1], 2) + Math.pow(points[j + 2][0] - points[0][0], 2));
 
       double s = (sideOne + sideTwo + sideThree) / 2;
 
-      double triangleArea =
-          Math.sqrt(s * (s - sideOne) * (s - sideTwo) * (s - sideThree));
+      double triangleArea = Math.sqrt(s * (s - sideOne) * (s - sideTwo) * (s - sideThree));
 
       totalArea += triangleArea;
     }

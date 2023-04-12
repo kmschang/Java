@@ -34,8 +34,7 @@ public class Exercise08_05 {
     }
 
     // adding them together
-    if (matrix1.length != matrix2.length ||
-        matrix1[0].length != matrix2[0].length) {
+    if (matrix1.length != matrix2.length || matrix1[0].length != matrix2[0].length) {
       System.out.println("FAIL");
     } else {
       for (int i = 0; i < 3; ++i) {

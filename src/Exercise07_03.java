@@ -37,9 +37,7 @@ public class Exercise07_03 {
 
     int times = 1;
     for (int k = 0; k < new_numbers.length; ++k) {
-      if (k == new_numbers.length - 1 &
-          new_numbers[new_numbers.length - 1] ==
-              new_numbers[new_numbers.length - 2]) {
+      if (k == new_numbers.length - 1 & new_numbers[new_numbers.length - 1] == new_numbers[new_numbers.length - 2]) {
         ++times;
       } else if (k == new_numbers.length - 1) {
         System.out.println(new_numbers[k] + " occurs 1 time");

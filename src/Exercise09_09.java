@@ -21,9 +21,7 @@ public class Exercise09_09 {
 
   public double getPerimeter() { return n * side; }
 
-  public double getArea() {
-    return (n * side * side) / (4 * (Math.tan(Math.PI / n)));
-  }
+  public double getArea() { return (n * side * side) / (4 * (Math.tan(Math.PI / n))); }
 
   public static void main(String[] args) {
 

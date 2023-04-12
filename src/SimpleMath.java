@@ -65,8 +65,7 @@ class division extends SimpleMath {
 
   static double divide(double num1, double num2) throws InvalidDivision {
 
-    if (num1 / num2 == Double.POSITIVE_INFINITY ||
-        num1 / num2 == Double.NEGATIVE_INFINITY) {
+    if (num1 / num2 == Double.POSITIVE_INFINITY || num1 / num2 == Double.NEGATIVE_INFINITY) {
       throw new InvalidDivision();
     } else {
       return num1 / num2;

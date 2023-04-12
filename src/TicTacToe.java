@@ -394,7 +394,10 @@ public class TicTacToe {
     }
   }
 
-  public static boolean check_location(int row, int col) { return board[row][col] != 'X' && board[row][col] != 'O'; }
+  public static boolean check_location(int row, int col) {
+    return board[row][col] != 'X' && board[row][col] != 'O';
+    // This is here so that it won't fit on the same line
+  }
 
   public static void choose_location() {
 

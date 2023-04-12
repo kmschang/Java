@@ -39,8 +39,7 @@ public class Exercise11_17 {
       n = n * oddPrimeFactors.get(i);
     }
 
-    System.out.println(
-        "The smallest number n for m x n to be a perfect square is " + n);
+    System.out.println("The smallest number n for m x n to be a perfect square is " + n);
     System.out.println("m x n is " + n * original);
   }
 

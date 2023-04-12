@@ -61,9 +61,7 @@ public class SchangKyleProj2 {
     void writeOutput() { System.out.println("Name: " + name); }
 
     // making sure that no one has the same name
-    boolean hasSameName(Person otherPerson) {
-      return this.name.equalsIgnoreCase(otherPerson.name);
-    }
+    boolean hasSameName(Person otherPerson) { return this.name.equalsIgnoreCase(otherPerson.name); }
   }
 
   // student class which extends person
@@ -79,9 +77,7 @@ public class SchangKyleProj2 {
     }
 
     // set student number
-    void setStudentNumber(int newStudentNumber) {
-      studentNumber = newStudentNumber;
-    }
+    void setStudentNumber(int newStudentNumber) { studentNumber = newStudentNumber; }
 
     // get student number
     int getStudentNumber() { return studentNumber; }
@@ -100,8 +96,7 @@ public class SchangKyleProj2 {
 
     // making sure no one else has the same name and student number
     boolean equal(Student otherStudent) {
-      return this.hasSameName(otherStudent) &&
-          (this.studentNumber == otherStudent.studentNumber);
+      return this.hasSameName(otherStudent) && (this.studentNumber == otherStudent.studentNumber);
     }
   }
 
@@ -131,8 +126,7 @@ public class SchangKyleProj2 {
 
     // checking for overlap
     boolean equal(Undergraduate otherUndergraduate) {
-      return super.equal(otherUndergraduate) &&
-          (this.level == otherUndergraduate.level);
+      return super.equal(otherUndergraduate) && (this.level == otherUndergraduate.level);
     }
 
     // resetting the name
@@ -173,9 +167,7 @@ public class SchangKyleProj2 {
     }
 
     // making sure there is not overlap
-    boolean equal(Graduate otherGraduate) {
-      return super.equal(otherGraduate) && (this.level == otherGraduate.level);
-    }
+    boolean equal(Graduate otherGraduate) { return super.equal(otherGraduate) && (this.level == otherGraduate.level); }
   }
 
   // employee class which extends person
@@ -211,8 +203,7 @@ public class SchangKyleProj2 {
     String title;
 
     // way to set the name, employee id, department, and title
-    Faculty(String newName, int newEmployeeID, String newDepartment,
-            String newTitle) {
+    Faculty(String newName, int newEmployeeID, String newDepartment, String newTitle) {
       super(newName, newEmployeeID);
       department = newDepartment;
       title = newTitle;
@@ -238,8 +229,7 @@ public class SchangKyleProj2 {
     }
 
     // reset name, employee id, department, and title
-    void reset(String newName, int newEmployeeID, String newDepartment,
-               String newTitle) {
+    void reset(String newName, int newEmployeeID, String newDepartment, String newTitle) {
       super.setName(newName);
       super.setEmployeeID(newEmployeeID);
       department = newDepartment;
@@ -248,8 +238,7 @@ public class SchangKyleProj2 {
 
     // making sure there is not overlap
     boolean equal(Faculty otherFaculty) {
-      return super.hasSameName(otherFaculty) &&
-          (this.employeeID == otherFaculty.employeeID) &&
+      return super.hasSameName(otherFaculty) && (this.employeeID == otherFaculty.employeeID) &&
           (this.department.equalsIgnoreCase(otherFaculty.department)) &&
           (this.title.equalsIgnoreCase(otherFaculty.title));
     }
@@ -263,8 +252,7 @@ public class SchangKyleProj2 {
     int payGrade;
 
     // setting name, employee id, department, and pay grade with the class
-    Staff(String newName, int newEmployeeID, String newDepartment,
-          int newPayGrade) {
+    Staff(String newName, int newEmployeeID, String newDepartment, int newPayGrade) {
       super(newName, newEmployeeID);
       department = newDepartment;
       payGrade = newPayGrade;
@@ -290,8 +278,7 @@ public class SchangKyleProj2 {
     }
 
     // reset the name, employee, department, and pay grade
-    void reset(String newName, int newEmployeeID, String newDepartment,
-               int newPayGrade) {
+    void reset(String newName, int newEmployeeID, String newDepartment, int newPayGrade) {
       super.setName(newName);
       super.setEmployeeID(newEmployeeID);
       department = newDepartment;
@@ -300,10 +287,8 @@ public class SchangKyleProj2 {
 
     // making sure that there is no overlap between other staffers
     boolean equal(Staff otherStaff) {
-      return super.hasSameName(otherStaff) &&
-          (this.employeeID == otherStaff.employeeID) &&
-          (this.department.equalsIgnoreCase(otherStaff.department)) &&
-          (this.payGrade == otherStaff.payGrade);
+      return super.hasSameName(otherStaff) && (this.employeeID == otherStaff.employeeID) &&
+          (this.department.equalsIgnoreCase(otherStaff.department)) && (this.payGrade == otherStaff.payGrade);
     }
   }
 }

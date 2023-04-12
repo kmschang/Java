@@ -114,18 +114,15 @@ public class SchangKyleProj1 {
   public static void solveBoard() {
     // one zero missing, solves with type one
     if (zeros == 1) {
-      System.out.println("(" + location[0][0] + "," + location[0][1] + "," +
-                         typeOneH(location[0][0]) + ")");
+      System.out.println("(" + location[0][0] + "," + location[0][1] + "," + typeOneH(location[0][0]) + ")");
       answers[0][0] = location[0][0];
       answers[0][1] = location[0][1];
       answers[0][2] = typeOneH(location[0][0]);
     }
     // two zeros missing, solves with type two zero
     if (zeros == 2) {
-      System.out.print("(" + location[0][0] + "," + location[0][1] + "," +
-                       typeTwo()[0] + ")");
-      System.out.println(" (" + location[1][0] + "," + location[1][1] + "," +
-                         typeTwo()[1] + ")");
+      System.out.print("(" + location[0][0] + "," + location[0][1] + "," + typeTwo()[0] + ")");
+      System.out.println(" (" + location[1][0] + "," + location[1][1] + "," + typeTwo()[1] + ")");
       answers[0][0] = location[0][0];
       answers[0][1] = location[0][1];
       answers[0][2] = typeTwo()[0];
