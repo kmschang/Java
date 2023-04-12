@@ -12,3 +12,7 @@ public class FirstIndex {
     }
   }
 }
+
+class testing_1 {
+  public static void main(String[] args) { System.out.println("THIS IS A TEST"); }
+}
