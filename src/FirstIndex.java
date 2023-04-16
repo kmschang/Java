@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class FirstIndex {
   public static void main(String[] args) {
     int dim = 4;
@@ -20,7 +22,7 @@ class free {
 
   public static void main(String[] args) {
     java.util.Date x = new java.util.Date();
-    java.util.Date y = x.clone();
+    java.util.Date y = (Date)x.clone();
     System.out.println(x = y);
   }
 }
