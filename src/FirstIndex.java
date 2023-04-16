@@ -15,3 +15,12 @@ public class FirstIndex {
 class testing_1 {
   public static void main(String[] args) { System.out.println("THIS IS A TEST"); }
 }
+
+class free {
+
+  public static void main(String[] args) {
+    java.util.Date x = new java.util.Date();
+    java.util.Date y = x.clone();
+    System.out.println(x = y);
+  }
+}
