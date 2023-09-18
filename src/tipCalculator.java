@@ -75,7 +75,7 @@ class checkNumberInputs {
         if (input >= lower & input <= upper) {
           return input;
         } else {
-          System.out.println("Input out of bounds. Please enter and integer between " + lower + " and " + upper + ".");
+          System.out.println("Input out of bounds. Please enter an integer between " + lower + " and " + upper + ".");
         }
       } catch (NumberFormatException exception) {
         System.out.println("Invalid input. Please only input integers.");
@@ -83,7 +83,35 @@ class checkNumberInputs {
     } while (true);
   }
 
-  public static void main(String[] args) { checkNumberInputs checkInputs = new checkNumberInputs(); }
+  public double checkDoubleInput(String prompt) {
+    do {
+      try {
+        System.out.println(prompt);
+        return Double.parseDouble(scnr.nextLine());
+      } catch (NumberFormatException exception) {
+        System.out.println("Invalid input. Please only input integers or doubles.");
+      }
+    } while (true);
+  }
+
+  public double checkDoubleInputRange(String prompt, double lower, double upper) {
+    boolean validAnswer = false;
+    double input;
+    do {
+      try {
+        System.out.println(prompt);
+        input = Double.parseDouble(scnr.nextLine());
+        if (input >= lower & input <= upper) {
+          return input;
+        } else {
+          System.out.println("Input out of bounds. Please enter an integer or double between " + lower + " and " +
+                             upper + ".");
+        }
+      } catch (NumberFormatException exception) {
+        System.out.println("Invalid input. Please only input integers or doubles.");
+      }
+    } while (true);
+  }
 }
 
 class checkStringInputs {
