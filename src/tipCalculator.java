@@ -118,30 +118,18 @@ class checkStringInputs {
 
   public Scanner scnr = new Scanner(System.in);
 
-  public void checkStringInput(String prompt, String answer1) {
-    boolean correctAnswer = false;
+  public boolean checkStringInputYorN(String prompt) {
     do {
-      System.out.println(prompt);
+      System.out.println(prompt + " (yes or no)");
       String input = scnr.nextLine();
-      if (input.equalsIgnoreCase(answer1)) {
-        correctAnswer = true;
+      if (input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("y")) {
+        return true;
+      } else if (input.equalsIgnoreCase("no") || input.equalsIgnoreCase("n")) {
+        return false;
       } else {
-        System.out.println("That is an invalid input.");
+        System.out.println(input + " is not a valid answer. Please input 'yes' or 'no'");
       }
-    } while (!correctAnswer);
-  }
-
-  public void checkStringInput(String prompt, String answer1, String answer2) {
-    boolean correctAnswer = false;
-    do {
-      System.out.println(prompt);
-      String input = scnr.nextLine();
-      if (input.equalsIgnoreCase(answer1) || input.equalsIgnoreCase(answer2)) {
-        correctAnswer = true;
-      } else {
-        System.out.println("That is an invalid input.");
-      }
-    } while (!correctAnswer);
+    } while (true);
   }
 
   public static void main(String[] args) { checkStringInputs checkStringInputs = new checkStringInputs(); }
