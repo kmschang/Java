@@ -10,7 +10,7 @@
 - color coded for easy visualization each player's pieces
 - Nice interfae and titles to easily know what is going on
 
-### Suduko,java
+### Suduko.java
 - Project from Object Oriented Programming class
 - Check to see if it is a valid Suduko board and then fills in the missing numbers
 - First look at OOP
