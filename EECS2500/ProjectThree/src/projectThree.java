@@ -48,16 +48,29 @@ public class projectThree {
   }
 
   // Converts each word to lower case
-  public String lowerCase(String word) { return word.toLowerCase(); }
+  public String lowerCase(String word) {
+    return word.toLowerCase();
+  }
 
   // Removes punctuation
-  public String removePunctuation(String word) { return word.replaceAll("[^a-zA-Z]", ""); }
+  public String removePunctuation(String word) {
+    // remove all punctuation except apostrophes
+    word = word.replaceAll("[^[\\w’'—-]+]", "");
+    if (word.contains("----")) {
+      word = "";
+    }
+    return word;
+  }
 
   // Formats the word to remove punctuation and convert to lower case all in one
-  public String formatting(String word) { return removePunctuation(lowerCase(word)); }
+  public String formatting(String word) {
+    return removePunctuation(lowerCase(word));
+  }
 
   // Checks if the word is in the map
-  public boolean checkWord(String word) { return wordMap.containsKey(word); }
+  public boolean checkWord(String word) {
+    return wordMap.containsKey(word);
+  }
 
   // Prints the map
   public void printMap() {
@@ -69,9 +82,6 @@ public class projectThree {
     System.out.println("Number of unique words: " + wordMap.size());
 
     // Prints the words and their frequencies in order of frequency
-    wordMap.entrySet()
-        .stream()
-        .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
-        .forEach(System.out::println);
+    wordMap.entrySet().stream().sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).forEach(System.out::println);
   }
 }
