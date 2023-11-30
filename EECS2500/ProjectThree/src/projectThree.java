@@ -82,6 +82,6 @@ public class projectThree {
     System.out.println("Number of unique words: " + wordMap.size());
 
     // Prints the words and their frequencies in order of frequency
-    wordMap.entrySet().stream().sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).forEach(System.out::println);
+    // wordMap.entrySet().stream().sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).forEach(System.out::println);
   }
 }
