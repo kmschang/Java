@@ -20,6 +20,10 @@ public class projectThree {
   // Map to store the words and their frequencies
   Map<String, Integer> wordMap = new HashMap<>();
 
+  // Map to sore the words as a linked list and their frequencies
+  Map<LinkedListImplementation<String>, Integer> linkedWordMap = new HashMap<>();
+
+
   public static void main(String[] args) {
     projectThree projectThree = new projectThree();
 
