@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -20,8 +21,9 @@ public class projectThree {
   // Map to store the words and their frequencies
   Map<String, Integer> wordMap = new HashMap<>();
 
-  // Map to sore the words as a linked list and their frequencies
-  Map<LinkedListImplementation<String>, Integer> linkedWordMap = new HashMap<>();
+  // Linked List
+  LinkedListImplementation<String> linkedList = new LinkedListImplementation<>();
+
 
 
   public static void main(String[] args) {
@@ -46,6 +48,13 @@ public class projectThree {
         // If the word is not in the map, add it to the map with a frequency of 1
         wordMap.put(word, 1);
       }
+
+      // Checks if it is in the linked list
+        if (!linkedList.contains(word)) {
+          // If it is, remove it and add it to the end
+          linkedList.add(word);
+        }
+
     }
 
     printMap();
@@ -59,7 +68,7 @@ public class projectThree {
   // Removes punctuation
   public String removePunctuation(String word) {
     // remove all punctuation except apostrophes
-    word = word.replaceAll("[^[\\w’'—-]+]", "");
+    word = word.replaceAll("[^([a-zA-Z’'—-])]", "");
     if (word.contains("----")) {
       word = "";
     }
