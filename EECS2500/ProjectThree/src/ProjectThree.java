@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 
-public class ProjectThreeTwo {
+public class ProjectThree {
 
     public Map<Integer, LinkedQueueImplementation<String>> wordMap = new HashMap<>();
 
@@ -106,7 +106,7 @@ public class ProjectThreeTwo {
     }
 
     public static void main(String[] args) {
-        ProjectThreeTwo projectThree = new ProjectThreeTwo();
+        ProjectThree projectThree = new ProjectThree();
 
         projectThree.readText();
         projectThree.printMap();
