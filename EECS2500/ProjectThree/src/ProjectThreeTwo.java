@@ -17,6 +17,7 @@ public class ProjectThreeTwo {
     }
 
     // Function to format the word and remove punctuation
+    @SuppressWarnings("ConstantValue")
     public String formatting(String word) {
         word = word.toLowerCase();
         word = word.replaceAll("\\s+", "");
