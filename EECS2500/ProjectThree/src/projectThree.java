@@ -22,7 +22,7 @@ public class projectThree {
   Map<String, Integer> wordMap = new HashMap<>();
 
   // Linked List
-  LinkedListImplementation<String> linkedList = new LinkedListImplementation<>();
+  LinkedQueueImplementation<String> linkedList = new LinkedQueueImplementation<>();
 
 
 
@@ -52,7 +52,7 @@ public class projectThree {
       // Checks if it is in the linked list
         if (!linkedList.contains(word)) {
           // If it is, remove it and add it to the end
-          linkedList.add(word);
+          // linkedList.add(word);
         }
 
     }
