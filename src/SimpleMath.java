@@ -1,7 +1,7 @@
 public class SimpleMath {
 
-  double num1;
-  double num2;
+  static double num1;
+  static double num2;
   double num3;
 
   static double result;
@@ -9,6 +9,8 @@ public class SimpleMath {
   public static void main(String[] args) {
     try {
       System.out.println(addition.add(5, 6));
+      addition brad = new addition(12, 12);
+      System.out.println(brad.add());
       System.out.println(division.divide(5, 0));
       System.out.println(multiply.product(5, 6));
       System.out.println(multiply.product(5, 6, 7));
@@ -41,6 +43,7 @@ class addition extends SimpleMath {
     this.num2 = num2;
   }
 
+  static double add() { return num1 + num2; }
   static double add(double num1, double num2) { return num1 + num2; }
 }
 
